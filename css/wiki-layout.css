@@ -1,0 +1,453 @@
+/* ==========================================================================
+   CYBER-ELEMENTAL WIKI // LAYOUT, SIDEBAR & GRID
+   ========================================================================== */
+
+/* Barra de Progreso de Lectura */
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal-cyber), var(--cyan-neon));
+    box-shadow: 0 0 10px var(--cyan-neon);
+    width: 0%;
+    z-index: 10001;
+    transition: width 0.1s ease;
+}
+
+/* Header Superior Fijo */
+.wiki-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: rgba(6, 7, 10, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 1000;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wiki-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wiki-logo .logo-bolt {
+    color: var(--cyan-neon);
+    text-shadow: 0 0 10px var(--cyan-glow);
+    font-size: 1.4rem;
+}
+
+.wiki-version-tag {
+    font-size: 0.75rem;
+    font-family: 'Share Tech Mono', monospace;
+    background: rgba(102, 252, 241, 0.1);
+    color: var(--cyan-neon);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+}
+
+/* Barra de Búsqueda Global */
+.topbar-search-container {
+    position: relative;
+    width: 380px;
+    max-width: 100%;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--teal-cyber);
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.wiki-search-input {
+    width: 100%;
+    background: rgba(14, 17, 24, 0.9);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 2.8rem 0.6rem 2.5rem;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.wiki-search-input:focus {
+    border-color: var(--cyan-neon);
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
+    background: rgba(18, 24, 38, 0.95);
+}
+
+.search-kbd-hint {
+    position: absolute;
+    right: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* Dropdown de Resultados de Búsqueda */
+.search-results-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--cyan-neon);
+    border-radius: var(--radius-md);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(102, 252, 241, 0.25);
+    max-height: 420px;
+    overflow-y: auto;
+    display: none;
+    z-index: 10000;
+}
+
+.search-results-dropdown.active {
+    display: block;
+}
+
+.search-result-item {
+    display: block;
+    padding: 0.85rem 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.search-result-item:hover {
+    background: rgba(102, 252, 241, 0.12);
+}
+
+.search-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+}
+
+.search-item-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.search-category-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    background: rgba(69, 162, 158, 0.25);
+    color: var(--cyan-neon);
+    border: 1px solid rgba(69, 162, 158, 0.4);
+}
+
+.search-item-snippet {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.search-highlight {
+    background: rgba(102, 252, 241, 0.35);
+    color: #ffffff;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.search-no-results {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(102, 252, 241, 0.08);
+    border: 1px solid var(--border-subtle);
+    color: var(--cyan-neon);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s ease;
+}
+
+.btn-repo-link:hover {
+    background: var(--cyan-neon);
+    color: #06070a;
+    box-shadow: 0 0 15px var(--cyan-glow);
+}
+
+/* Botón Hamburguesa Móvil */
+.btn-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--cyan-neon);
+    font-size: 1.25rem;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+}
+
+/* Estructura Principal del Contenido */
+.wiki-container {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* Sidebar Fijo de Navegación */
+.wiki-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    height: calc(100vh - var(--header-height));
+    position: sticky;
+    top: var(--header-height);
+    background: rgba(10, 13, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--border-subtle);
+    overflow-y: auto;
+    padding: 1.5rem 1rem 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.nav-group-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--teal-cyber);
+    margin-bottom: 0.6rem;
+    padding-left: 0.5rem;
+}
+
+.wiki-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(102, 252, 241, 0.08);
+    border-left-color: var(--teal-cyber);
+}
+
+.nav-link.active {
+    color: var(--cyan-neon);
+    background: rgba(102, 252, 241, 0.12);
+    border-left-color: var(--cyan-neon);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    font-weight: 600;
+}
+
+.nav-link-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Contenido Central */
+.wiki-content {
+    flex: 1;
+    min-width: 0;
+    padding: 2.5rem 3.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Banner Hero */
+.wiki-hero-banner {
+    position: relative;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-active);
+    box-shadow: 0 0 25px rgba(102, 252, 241, 0.15);
+    background-image: linear-gradient(to right, rgba(6, 7, 10, 0.95) 30%, rgba(6, 7, 10, 0.4) 100%), url('../assets/arena_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 3.5rem 2.5rem;
+    margin-bottom: 3.5rem;
+    overflow: hidden;
+}
+
+.hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--cyan-neon);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-title {
+    font-size: 2.75rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px var(--cyan-glow);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.hero-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s ease;
+}
+
+.hero-btn-primary {
+    background: var(--cyan-neon);
+    color: #06070a;
+    box-shadow: 0 0 15px var(--cyan-glow);
+}
+
+.hero-btn-primary:hover {
+    background: #ffffff;
+    box-shadow: 0 0 25px var(--cyan-glow);
+    color: #06070a;
+}
+
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid var(--border-subtle);
+}
+
+.hero-btn-secondary:hover {
+    background: rgba(102, 252, 241, 0.15);
+    border-color: var(--cyan-neon);
+}
+
+/* Secciones de Contenido */
+.wiki-section {
+    margin-bottom: 4.5rem;
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+
+.wiki-footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 3rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Botón Volver Arriba Flotante */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(14, 17, 24, 0.85);
+    border: 1px solid var(--cyan-neon);
+    color: var(--cyan-neon);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8), 0 0 12px var(--cyan-glow);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.btn-back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.btn-back-to-top:hover {
+    background: var(--cyan-neon);
+    color: #06070a;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px var(--cyan-glow);
+}

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Cyber-Elemental // Wiki Táctica Oficial</title>
+    <meta name="description" content="Enciclopedia táctica, bestiario, fórmulas matemáticas, matriz de reacciones y guía definitiva de Cyber-Elemental Roguelike.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Hojas de Estilo Modulares -->
+    <link rel="stylesheet" href="css/wiki-theme.css">
+    <link rel="stylesheet" href="css/wiki-layout.css">
+    <link rel="stylesheet" href="css/wiki-components.css">
+    <link rel="stylesheet" href="css/wiki-responsive.css">
+</head>
+<body>
+    <!-- Efecto Sutil de Scanlines Cyberpunk -->
+    <div class="scanlines-overlay"></div>
+
+    <!-- Barra de Progreso de Lectura -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- Backdrop Oscuro para Móvil -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+    <!-- HEADER / TOPBAR SUPERIOR FIJA -->
+    <header class="wiki-topbar">
+        <div class="topbar-left">
+            <button id="btn-nav-toggle" class="btn-nav-toggle" aria-label="Abrir Menú Táctico">☰</button>
+            <a href="#sec-overview" class="wiki-logo">
+                <span class="logo-bolt">⚡</span>
+                <span>CYBER-ELEMENTAL</span>
+            </a>
+            <span class="wiki-version-tag">WIKI v2.5 // CORE DOCS</span>
+        </div>
+
+        <!-- Buscador Global Instantáneo -->
+        <div class="topbar-search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="global-wiki-search" class="wiki-search-input" placeholder="Buscar mecánica, habilidad, jefe..." autocomplete="off">
+                <span class="search-kbd-hint">Ctrl K</span>
+            </div>
+            <div id="search-results-dropdown" class="search-results-dropdown"></div>
+        </div>
+
+        <div class="topbar-right">
+            <a href="https://github.com/Explodingcat/WikiCiberElemental" target="_blank" rel="noopener noreferrer" class="btn-repo-link" title="Ver Repositorio en GitHub">
+                <span>GitHub Repo</span> ↗
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="wiki-container">
+        <!-- SIDEBAR DE NAVEGACIÓN TÁCTICA -->
+        <aside id="wiki-sidebar" class="wiki-sidebar">
+            <div>
+                <div class="nav-group-title">Sistemas Principales</div>
+                <ul class="wiki-nav">
+                    <li><a href="#sec-overview" class="nav-link"><span class="nav-link-icon">🌆</span> 01. Visión General & Lore</a></li>
+                    <li><a href="#sec-combat" class="nav-link"><span class="nav-link-icon">⚙️</span> 02. Combate & Mecánicas</a></li>
+                    <li><a href="#sec-reactions" class="nav-link"><span class="nav-link-icon">💥</span> 03. Reacciones & Marcas</a></li>
+                    <li><a href="#sec-simulator" class="nav-link"><span class="nav-link-icon">⚡</span> 04. Simulador de Combos</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="nav-group-title">Base de Datos</div>
+                <ul class="wiki-nav">
+                    <li><a href="#sec-bestiary" class="nav-link"><span class="nav-link-icon">🤖</span> 05. Bestiario & Jefes</a></li>
+                    <li><a href="#sec-arsenal" class="nav-link"><span class="nav-link-icon">🗡️</span> 06. Armamento & Chips</a></li>
+                    <li><a href="#sec-towers" class="nav-link"><span class="nav-link-icon">🗼</span> 07. Campaña Multitorre</a></li>
+                    <li><a href="#sec-mystery-events" class="nav-link"><span class="nav-link-icon">❓</span> 08. Eventos Misteriosos (21)</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="nav-group-title">Estrategia & Técnica</div>
+                <ul class="wiki-nav">
+                    <li><a href="#sec-probabilities" class="nav-link"><span class="nav-link-icon">📊</span> 09. Probabilidades & Dropeo</a></li>
+                    <li><a href="#sec-skill-tree" class="nav-link"><span class="nav-link-icon">🌳</span> 10. Árbol de Habilidades (50)</a></li>
+                    <li><a href="#sec-architecture" class="nav-link"><span class="nav-link-icon">💾</span> 11. Arquitectura & Supabase</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ARTÍCULO / CONTENIDO CENTRAL -->
+        <main class="wiki-content">
+            <!-- HERO BANNER -->
+            <div class="wiki-hero-banner">
+                <div class="hero-tag">Terminal de Inteligencia Táctica // Archivo Desclasificado</div>
+                <h1 class="hero-title">CYBER-ELEMENTAL WIKI</h1>
+                <p class="hero-subtitle">
+                    Manual de operaciones, sinergias de combate en escuadrón, tablas de probabilidad estricta y base de datos completa de autómatas, armas cibernéticas y núcleos de la torre.
+                </p>
+                <div class="hero-quick-actions">
+                    <a href="#sec-simulator" class="hero-btn hero-btn-primary">⚡ Probar Simulador de Combos</a>
+                    <a href="#sec-skill-tree" class="hero-btn hero-btn-secondary">🌳 Ver Árbol de Talentos (50 Pasivas)</a>
+                    <a href="#sec-bestiary" class="hero-btn hero-btn-secondary">🤖 Consultar Bestiario</a>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 01. VISIÓN GENERAL & LORE
+                 ========================================================================== -->
+            <section id="sec-overview" class="wiki-section">
+                <h2><span>🌆</span> 01. Visión General & Lore</h2>
+                
+                <p>
+                    <strong>Cyber-Elemental</strong> es un RPG táctico <em>roguelike</em> ambientado en una megaurbe cyberpunk en el año 2184. Los jugadores asumen el rol de un comandante cibernético que lidera un escuadrón de combate formado por autómatas avanzados equipados con reactores elementales de <strong>Fuego (🔥)</strong>, <strong>Agua (💦)</strong>, <strong>Tierra (🪨)</strong> y <strong>Aire (💨)</strong>.
+                </p>
+
+                <div class="callout-box tip">
+                    <div class="callout-title">🎯 Objetivo de la Misión</div>
+                    Infiltrarse a través de los sectores hostiles de la <strong>Torre Cibernética</strong>, ascender piso por piso derrotando centinelas rebeldes, reclutar nuevos aliados, cosechar chatarra para forjar armas y neutralizar al núcleo de inteligencia artificial corrupta que gobierna el sector: <strong>TITAN-X</strong> (y sus evoluciones en torres superiores: <strong>TITAN-OMEGA</strong> y <strong>SINGULARIDAD-ZERO</strong>).
+                </div>
+
+                <div id="sec-overview-victory" class="callout-box warning">
+                    <div class="callout-title">👑 Condiciones de Victoria y Derrota (Fin de Incursión)</div>
+                    <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                        <li><strong>Victoria de la Incursión:</strong> Alcanzar la Cámara del Núcleo en el <strong>Piso 10</strong> y destruir a <strong>TITAN-X</strong>. Otorga la <em>Llave Cuántica</em> 🔑 para ascender a la Torre 2 y garantiza 1 <em>Arma Dorada Legendaria</em> 👑.</li>
+                        <li><strong>Derrota Inmediata (Game Over):</strong> Si todos los robots activos del escuadrón llegan a <strong>0 HP</strong> en cualquier combate o debido a una explosión por intento fallido de reprogramación Élite. Al ser un roguelike, la expedición se reinicia desde el Piso 1, pero <strong>el 100% de la chatarra remanente se transfiere permanentemente a tu pozo global</strong> para desbloquear mejoras pasivas.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 02. COMBATE & MECÁNICAS
+                 ========================================================================== -->
+            <section id="sec-combat" class="wiki-section">
+                <h2><span>⚙️</span> 02. Combate & Mecánicas</h2>
+
+                <h3 id="sec-elements">Rueda de Afinidades Elementales</h3>
+                <p>
+                    Los 4 elementos interactúan en un ciclo cerrado de efectividad táctica estricta:
+                </p>
+
+                <div class="callout-box">
+                    <div class="callout-title">Ciclo Elemental</div>
+                    $$\text{Fuego (🔥)} \longrightarrow \text{Tierra (🪨)} \longrightarrow \text{Aire (💨)} \longrightarrow \text{Agua (💦)} \longrightarrow \text{Fuego (🔥)}$$
+                </div>
+
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Interacción</th>
+                                <th>Multiplicador</th>
+                                <th>Efecto en Combate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge-elem badge-FUEGO">Ventaja Elemental</span></td>
+                                <td><strong>1.35x (135%)</strong></td>
+                                <td>Inflige un 35% de daño extra directo sobre el blindaje objetivo.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AGUA">Desventaja Elemental</span></td>
+                                <td><strong>0.75x (75%)</strong></td>
+                                <td>El impacto se ve amortiguado, reduciendo el daño en un 25%.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-NEUTRO">Neutro / Mismo Elemento</span></td>
+                                <td><strong>1.0x (100%)</strong></td>
+                                <td>Daño estándar sin bonificaciones ni penalizaciones directas.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-LEGENDARIO">Afinidad Legendaria</span></td>
+                                <td><strong>1.15x (115%)</strong></td>
+                                <td>Daño universal sin desventaja contra ninguna unidad.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="sec-party-combat" style="margin-top: 2rem;">Despliegue Simultáneo de Escuadrón (Party Combat 3v3)</h3>
+                <p>
+                    A diferencia de los combates individuales tradicionales, en Cyber-Elemental <strong>hasta 3 autómatas aliados</strong> luchan simultáneamente en la arena sobre pedestales holográficos individuales. Cada robot posee su propia tarjeta HUD con vida, barra de energía, nivel, arma equipada y chips instalados.
+                </p>
+
+                <h3 id="sec-timeline">Timeline de Iniciativa y Velocidad (⚡ SPD)</h3>
+                <p>
+                    En la cabecera superior del campo de batalla se renderiza la <strong>Barra de Iniciativa</strong>. Al inicio de cada ronda, el microprocesador ordena a todos los combatientes activos de mayor a menor según su atributo de <strong>Velocidad (⚡ SPD)</strong>.
+                </p>
+                <ul>
+                    <li><strong>Turno Activo:</strong> La unidad en turno se ilumina con un halo neón y una animación de levitación más rápida.</li>
+                    <li><strong>Animación de Impacto:</strong> Las acciones ofensivas disparan un <em>dash</em> cinético hacia adelante seguido por el impacto elemental y el retroceso del defensor.</li>
+                    <li><strong>IA Táctica Enemiga:</strong> Los rivales priorizan objetivos sobre los cuales poseen ventaja de elemento o rematan a unidades aliadas con baja vida.</li>
+                </ul>
+
+                <h3 id="sec-combat-actions" style="margin-top: 2rem;">Acciones por Turno</h3>
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Acción</th>
+                                <th>Icono</th>
+                                <th>Mecánica y Coste</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ataque Básico</strong></td>
+                                <td>⚔️</td>
+                                <td>1.0x de daño base. <strong>Única acción capaz de asestar Impactos Críticos (1.5x / +50% daño)</strong>. Cooldown 0.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Habilidad Especial</strong></td>
+                                <td>⚡</td>
+                                <td>Técnicas de alta potencia (1.2x a 2.0x). Poseen Cooldown (2 a 4 turnos) y <strong>aplican Marca Elemental durante 3 turnos</strong>. No asestan críticos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Defender</strong></td>
+                                <td>🛡️</td>
+                                <td><strong>Reduce a la mitad (50%)</strong> todo el daño recibido hasta el inicio de su <em>siguiente turno</em> (protege eficazmente tanto a unidades lentas como veloces).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Suministros Tácticos</strong></td>
+                                <td>🎒</td>
+                                <td>Nanobots y Núcleos de Sobrecarga son <em>acciones gratuitas</em> (no consumen el turno). La Bomba PEM consume el turno activo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-box tip">
+                    <div class="callout-title">Curva de Experiencia y Crecimiento</div>
+                    <ul>
+                        <li><strong>Ganancia de XP:</strong> Vencer a un autómata otorga <code>Nivel_Enemigo × 50 XP</code> a todos los miembros vivos del escuadrón.</li>
+                        <li><strong>Subida de Nivel:</strong> Se requieren <code>Nivel_Actual × 100 XP</code> para alcanzar el siguiente nivel.</li>
+                        <li><strong>Escalado de Atributos:</strong> Cada nivel adquirido otorga un incremento pasivo permanente de <strong>+5% HP Máximo</strong> y <strong>+5% de Ataque (ATQ)</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 03. REACCIONES & MARCAS
+                 ========================================================================== -->
+            <section id="sec-reactions" class="wiki-section">
+                <h2><span>💥</span> 03. Matriz de Reacciones & Marcas Elementales</h2>
+
+                <p>
+                    Toda habilidad especial con Cooldown adhiere una <strong>Marca Elemental</strong> (Fuego 🔥, Agua 💦, Tierra 🪨, Aire 💨) al objetivo durante <strong>3 turnos</strong>. Si un aliado posterior impacta al objetivo marcado con un elemento distinto, se detona una <strong>Reacción Elemental en Cadena</strong>.
+                </p>
+
+                <div class="callout-box warning">
+                    <div class="callout-title">Regla de Sobrescritura</div>
+                    Un combatiente solo puede tener <strong>1 Marca Elemental activa a la vez</strong>. Si recibe una nueva habilidad con marca antes de detonarse la previa, la marca anterior será reemplazada.
+                </div>
+
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Marca Activa</th>
+                                <th>Golpe Atacante</th>
+                                <th>Reacción</th>
+                                <th>Multiplicador</th>
+                                <th>Efecto Táctico Adicional</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><strong>¡Vaporización!</strong></td>
+                                <td><strong>1.50x</strong></td>
+                                <td>Daño térmico colosal masivo. El combo con mayor multiplicador puro.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><strong>¡Lodo!</strong></td>
+                                <td><strong>1.20x</strong></td>
+                                <td>Aplica <strong>Ralentización</strong> (-50% Velocidad durante 2 turnos).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><strong>¡Ventisca!</strong></td>
+                                <td><strong>1.35x</strong></td>
+                                <td>Aplica <strong>Congelación leve</strong> (-20% Precisión rival por 2 turnos).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><strong>¡Tormenta Ígnea!</strong></td>
+                                <td><strong>1.30x</strong></td>
+                                <td><strong>Renueva Quemadura a 3 turnos</strong> (8% HP/turno por 3T = 24% HP total).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><strong>¡Choque Térmico!</strong></td>
+                                <td><strong>1.45x</strong></td>
+                                <td><strong>Purga inmediata de todas las ventajas y escudos</strong> del rival.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><strong>¡Erupción!</strong></td>
+                                <td><strong>1.40x</strong></td>
+                                <td>Aplica <strong>Rompearmaduras</strong> (-25% Defensa enemiga por 2 turnos).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><strong>¡Cristalización!</strong></td>
+                                <td><strong>1.20x</strong></td>
+                                <td>Genera un <strong>Escudo del 25% de la vida actual</strong> para el atacante.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><strong>¡Erosión!</strong></td>
+                                <td><strong>1.30x</strong></td>
+                                <td><strong>Cura al atacante el 30% del daño infligido</strong> (Drenaje de vida).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><strong>¡Tormenta de Arena!</strong></td>
+                                <td><strong>1.30x</strong></td>
+                                <td>Aplica <strong>Ceguera</strong> (-50% Precisión en el próximo ataque rival).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td><strong>¡Deflagración!</strong></td>
+                                <td><strong>1.45x</strong></td>
+                                <td>Daño directo puro instantáneo sin requerir estados secundarios.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td><strong>¡Ciclón!</strong></td>
+                                <td><strong>1.35x</strong></td>
+                                <td><strong>Retrasa el turno del rival</strong> al último lugar de la ronda activa.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td><strong>¡Colapso Sísmico!</strong></td>
+                                <td><strong>1.40x</strong></td>
+                                <td>Causa <strong>Aturdimiento (STUN)</strong> condicional con 40% de probabilidad.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-box tip">
+                    <div class="callout-title">🛡️ Retribución Protectora (Barreras y Corazas)</div>
+                    Si un enemigo impacta contra un aliado protegido por la <em>Barrera Plasma</em> (Aqua) o la <em>Coraza de Espinas</em> (Terra), la coraza absorbe o refleja el impacto y contraataca: si el agresor ya poseía una Marca Elemental previa, se <strong>detona la Reacción Elemental Combinada</strong> calculada con el Ataque Básico del portador; si no tenía marca, le estampa la Marca Elemental correspondiente durante 3 turnos.
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 04. SIMULADOR DE COMBOS
+                 ========================================================================== -->
+            <section id="sec-simulator" class="wiki-section">
+                <h2><span>⚡</span> 04. Simulador Interactivo de Reacciones</h2>
+                <p>
+                    Prueba cualquier combinación en tiempo real para visualizar el combo, multiplicador numérico y sugerencias tácticas inmediatas:
+                </p>
+
+                <div class="simulator-container">
+                    <div class="sim-controls-grid">
+                        <div class="sim-control-group">
+                            <label for="sim-mark-select">1. Marca Activa en el Objetivo</label>
+                            <select id="sim-mark-select" class="sim-select">
+                                <option value="AGUA" selected>💦 Marca de Agua</option>
+                                <option value="FUEGO">🔥 Marca de Fuego</option>
+                                <option value="TIERRA">🪨 Marca de Tierra</option>
+                                <option value="AIRE">💨 Marca de Aire</option>
+                            </select>
+                        </div>
+
+                        <div class="sim-divider-arrow">➔</div>
+
+                        <div class="sim-control-group">
+                            <label for="sim-attacker-select">2. Elemento del Ataque Impactante</label>
+                            <select id="sim-attacker-select" class="sim-select">
+                                <option value="FUEGO" selected>🔥 Ataque de Fuego</option>
+                                <option value="AGUA">💦 Ataque de Agua</option>
+                                <option value="TIERRA">🪨 Ataque de Tierra</option>
+                                <option value="AIRE">💨 Ataque de Aire</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="sim-result-card" class="sim-result-card"></div>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 05. BESTIARIO & JEFES
+                 ========================================================================== -->
+            <section id="sec-bestiary" class="wiki-section">
+                <h2><span>🤖</span> 05. Bestiario Táctico: Robots, Élites & Jefes</h2>
+
+                <h3>Robots Base del Jugador</h3>
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Robot</th>
+                                <th>Elemento</th>
+                                <th>HP</th>
+                                <th>ATQ</th>
+                                <th>VEL</th>
+                                <th>ESQ</th>
+                                <th>PREC</th>
+                                <th>CRÍT</th>
+                                <th>Habilidades Iniciales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ignis</strong></td>
+                                <td><span class="badge-elem badge-FUEGO">🔥 Fuego</span></td>
+                                <td>90</td>
+                                <td>28</td>
+                                <td>11</td>
+                                <td>5%</td>
+                                <td>100%</td>
+                                <td>10%</td>
+                                <td><strong>Ignición (CD 3):</strong> 1.2x Daño + Marca Fuego + Quemadura (8% HP/T x 2T).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aqua</strong></td>
+                                <td><span class="badge-elem badge-AGUA">💦 Agua</span></td>
+                                <td>130</td>
+                                <td>14</td>
+                                <td>9</td>
+                                <td>5%</td>
+                                <td>95%</td>
+                                <td>5%</td>
+                                <td><strong>Barrera Plasma (CD 3):</strong> Inmunidad 1 golpe + Cura 5% HP + Marca Agua al agresor.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Terra</strong></td>
+                                <td><span class="badge-elem badge-TIERRA">🪨 Tierra</span></td>
+                                <td>175</td>
+                                <td>12</td>
+                                <td>4</td>
+                                <td>0%</td>
+                                <td>85%</td>
+                                <td>5%</td>
+                                <td><strong>Coraza Espinas (CD 2):</strong> Provocación total + 50% mitigación + 50% reflejo + 3 Marcas Tierra.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Zephyr</strong></td>
+                                <td><span class="badge-elem badge-AIRE">💨 Aire</span></td>
+                                <td>80</td>
+                                <td>22</td>
+                                <td>16</td>
+                                <td>25%</td>
+                                <td>95%</td>
+                                <td>15%</td>
+                                <td><strong>Ráfaga Cortante (CD 2):</strong> 1.4x Daño + Prioridad de primer turno garantizada.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="sec-special-elites" style="margin-top: 3rem;">Los 4 Grandes Élites Especiales</h3>
+                <p>
+                    Enemigos colosales con mecánicas únicas de alto impacto. Representan el mayor peligro de la torre y las mejores incorporaciones para tu escuadrón:
+                </p>
+                <div id="special-elites-grid" class="elites-grid"></div>
+
+                <div class="callout-box warning">
+                    <div class="callout-title">⚠️ Mutadores Cibernéticos en Combates Élite</div>
+                    Además de sus habilidades, todo robot Élite posee un mutador asignado aleatoriamente:
+                    <ul style="margin-top: 0.35rem; margin-left: 1.25rem;">
+                        <li><strong>Espinas:</strong> Devuelve pasivamente el 30% de todo el daño directo que recibe.</li>
+                        <li><strong>Regenerador:</strong> Restaura automáticamente un 10% de su HP Máximo al final de cada ronda.</li>
+                        <li><strong>Rabia:</strong> Gana un +10% de ATQ acumulable cada vez que sufre un golpe.</li>
+                    </ul>
+                </div>
+
+                <h3 id="sec-regular-enemies" style="margin-top: 3rem;">Catálogo de los 8 Enemigos Regulares</h3>
+                <div id="regular-enemies-grid" class="regular-enemies-grid"></div>
+
+                <h3 id="sec-bosses" style="margin-top: 3rem;">Jefes de Sector & Colosos de la Torre</h3>
+                <div id="bosses-grid" class="bosses-grid"></div>
+            </section>
+
+            <!-- ==========================================================================
+                 06. ARSENAL, CHIPS & SUMINISTROS
+                 ========================================================================== -->
+            <section id="sec-arsenal" class="wiki-section">
+                <h2><span>🗡️</span> 06. Armamento Cibernético, Chips & Suministros</h2>
+
+                <h3 id="sec-weapons">Armas Cibernéticas & Forja (+1)</h3>
+                <p>
+                    Las armas otorgan ventajas pasivas permanentes. En los <strong>Talleres de Reparación (⛺)</strong> puedes forjarlas para elevarlas a <strong>+1</strong>:
+                </p>
+                <div id="weapons-catalog-grid" class="weapons-catalog-grid"></div>
+
+                <div id="sec-weapon-affinity" class="callout-box tip">
+                    <div class="callout-title">🌟 Bono de Afinidad Elemental</div>
+                    Si el elemento del arma coincide con el elemento nativo del robot portador (ej: Espada de Fuego en Ignis), la unidad recibe automáticamente un bono permanente de <strong>+20% HP Máximo y +20% de ATQ</strong>.
+                </div>
+
+                <div id="sec-weapons-legendary" class="callout-box">
+                    <div class="callout-title">👑 Armas Legendarias Doradas</div>
+                    Obtenidas exclusivamente al derrotar a los Jefes de Sector (TITAN-X o TITAN-OMEGA). Otorgan <strong>Afinidad Universal (+25% ATQ y +15% HP)</strong> para cualquier robot sin importar su elemento, y un multiplicador permanente de <strong>1.15x de daño universal</strong> sin desventajas contra ningún elemento. Al desmantelarse otorgan <strong>+100 Chatarra</strong>.
+                </div>
+
+                <h3 id="sec-chips" style="margin-top: 3rem;">Chips de Habilidad Elemental (💾)</h3>
+                <p>
+                    Permiten a cualquier robot aprender una tercera técnica de un elemento distinto, facilitando que una misma unidad aplique y detone sus propias reacciones:
+                </p>
+                <div id="chips-catalog-grid" class="chips-catalog-grid"></div>
+
+                <h3 style="margin-top: 3rem;">Suministros Tácticos Consumibles</h3>
+                <div id="consumables-catalog-grid" class="consumables-catalog-grid"></div>
+            </section>
+
+            <!-- ==========================================================================
+                 07. NAVEGACIÓN MULTITORRE
+                 ========================================================================== -->
+            <section id="sec-towers" class="wiki-section">
+                <h2><span>🗼</span> 07. Campaña Multitorre & Nodos Sectoriales</h2>
+
+                <p>
+                    La incursión completa consta de <strong>30 pisos distribuidos en 3 Torres Sectoriales</strong> de dificultad creciente:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Torre</th>
+                                <th>Rango</th>
+                                <th>Hostilidad & Armamento Enemigo</th>
+                                <th>Jefe Supremo</th>
+                                <th>Recompensa de Acceso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Torre 1: Sector Periférico</strong></td>
+                                <td>Pisos 1 al 10</td>
+                                <td>Enemigos sin armas (a mano limpia con stats base).</td>
+                                <td><strong>TITAN-X</strong> (Piso 10)</td>
+                                <td>Llave Cuántica 🔑 + Arma Legendaria 👑</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Torre 2: Sub-Núcleo Cuántico</strong></td>
+                                <td>Pisos 11 al 20</td>
+                                <td>Enemigos armados (30% en P11, +10% por piso hasta 100%).</td>
+                                <td><strong>TITAN-OMEGA</strong> (Piso 20)</td>
+                                <td>Llave de Singularidad 🗝️ + Arma Legendaria 👑</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Torre 3: La Singularidad</strong></td>
+                                <td>Pisos 21 al 30</td>
+                                <td>100% de los enemigos estándar portan armas mejoradas.</td>
+                                <td><strong>SINGULARIDAD-ZERO</strong> (Piso 30)</td>
+                                <td>Victoria Absoluta de la Campaña 🏆</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Estructura Equilibrada de Cada Torre (10 Pisos)</h3>
+                <ul>
+                    <li><strong>🛒 Mercados Garantizados (2 por torre):</strong> 1 mercado aparece entre los pisos 2-4 y un 2º mercado entre los pisos 6-9.</li>
+                    <li><strong>🎁 Cámara de Tesoros (Piso 5 / 15 / 25):</strong> Compuesto <strong>exclusivamente por cofres sellados de alta gama</strong> sin ningún combate.</li>
+                    <li><strong>⛺ Talleres de Reparación:</strong> Permiten elegir entre <em>Reparar Escuadrón (30% HP)</em>, <em>Entrenar Robot (+300 XP)</em> o <em>Forjar Arma (+1)</em>.</li>
+                    <li><strong>❓ Terminales Misteriosas:</strong> Eventos de texto narrativos con dilemas cibernéticos interactivos.</li>
+                </ul>
+            </section>
+
+            <!-- ==========================================================================
+                 08. EVENTOS MISTERIOSOS (21)
+                 ========================================================================== -->
+            <section id="sec-mystery-events" class="wiki-section">
+                <h2><span>❓</span> 08. Guía Completa de los 21 Eventos Misteriosos</h2>
+                <p>
+                    En cada nodo de misterio (<code>❓</code>), se escoge aleatoriamente uno de los 21 eventos (<strong>4.76% de probabilidad individual</strong>). Utiliza el buscador para consultar costos, riesgos y recompensas:
+                </p>
+
+                <div class="search-input-wrapper" style="margin-bottom: 1.5rem; max-width: 420px;">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="events-filter-input" class="wiki-search-input" placeholder="Filtrar eventos por nombre o recompensa...">
+                </div>
+
+                <div id="mystery-events-grid" class="mystery-events-grid"></div>
+            </section>
+
+            <!-- ==========================================================================
+                 09. PROBABILIDADES & DROPEO
+                 ========================================================================== -->
+            <section id="sec-probabilities" class="wiki-section">
+                <h2><span>📊</span> 09. Probabilidades Matemáticas & Sistema de Dropeo</h2>
+
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Encuentro</th>
+                                <th>Chatarra Base</th>
+                                <th>XP Grupal</th>
+                                <th>Prob. Arma</th>
+                                <th>Prob. Chip</th>
+                                <th>Prob. Consumible</th>
+                                <th>Tasa de Reclutamiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>👾 <strong>Combate Normal</strong></td>
+                                <td>10 - 19 ⚙️</td>
+                                <td>Nivel × 50 XP</td>
+                                <td><strong>1.00%</strong> (Base)</td>
+                                <td>0.00%</td>
+                                <td><strong>30.00%</strong> (10% c/u)</td>
+                                <td><strong>100% Éxito</strong> (Entra al 50% HP)</td>
+                            </tr>
+                            <tr>
+                                <td>💀 <strong>Combate Élite</strong></td>
+                                <td>20 - 38 ⚙️ (x2)</td>
+                                <td>(Piso+2) × 50 XP</td>
+                                <td><strong>33.00%</strong> (+1)</td>
+                                <td><strong>33.00%</strong></td>
+                                <td><strong>100.00%</strong> (Garantizado)</td>
+                                <td><strong>50% Éxito / 50% 💥 Detonación (-10% HP)</strong></td>
+                            </tr>
+                            <tr>
+                                <td>👑 <strong>Jefe TITAN-X</strong></td>
+                                <td>20 - 38 ⚙️ (x2)</td>
+                                <td>500 XP fija</td>
+                                <td><strong>50.00%</strong> (Dorada)</td>
+                                <td><strong>50.00%</strong></td>
+                                <td><strong>100.00%</strong> (Garantizado)</td>
+                                <td>— (Victoria de Sector)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Fórmula de Apertura de Cofres (Piso 5 / 15 / 25)</h3>
+                <p>
+                    Todo cofre divide su contenido equitativamente en una tirada inicial de <strong>50% Arma Mejorada (+1)</strong> o <strong>50% Chip Elemental (💾)</strong>:
+                </p>
+                <div class="callout-box">
+                    $$\text{Probabilidad de un Arma Específica en Cofre} = 50\% \times 25\% \text{ (tipo)} \times 25\% \text{ (elemento)} = \mathbf{3.125\%} \quad (1 \text{ de cada } 32 \text{ cofres})$$
+                </div>
+
+                <h3 style="margin-top: 2rem;">Distribución del Mercado Negro (🛒)</h3>
+                <ul>
+                    <li><strong>Ranuras 1 y 2:</strong> 2 Armas Base (Costo: <code>random(35, 49) ⚙️</code>).</li>
+                    <li><strong>Ranuras 3 y 4:</strong> 2 Chips o Consumibles (14.29% probabilidad por artículo, Costo: 25 a 30 ⚙️).</li>
+                    <li><strong>Servicio de Desguace:</strong> Por <strong>30 ⚙️</strong> permite retirar a 1 robot del escuadrón, devolviendo sus armas y chips a la mochila.</li>
+                </ul>
+            </section>
+
+            <!-- ==========================================================================
+                 10. ÁRBOL DE HABILIDADES
+                 ========================================================================== -->
+            <section id="sec-skill-tree" class="wiki-section">
+                <h2><span>🌳</span> 10. Árbol de Habilidades Pasivas & Meta-Progresión</h2>
+
+                <p>
+                    En Cyber-Elemental la economía opera en dos capas complementarias: la <strong>Chatarra de la Run</strong> (recolectada y gastada durante los 10 pisos) y la <strong>Chatarra Global de la Cuenta</strong>. Al finalizar la expedición (por Game Over o Victoria), <strong>el 100% de la chatarra restante se transfiere permanentemente al pozo global</strong> para adquirir las 50 habilidades pasivas del Árbol de Talentos.
+                </p>
+
+                <div class="callout-box tip">
+                    <div class="callout-title">Costo Total del Árbol</div>
+                    Desbloquear las 50 habilidades pasivas completas requiere un total acumulado de <strong>14.525 ⚙️ de Chatarra Global</strong> a lo largo de 4 Tiers tecnológicos.
+                </div>
+
+                <!-- Controles Interactivos del Árbol -->
+                <div class="skill-tree-controls">
+                    <div class="skill-filters-group">
+                        <select id="skill-branch-filter" class="sim-select" style="width: auto;">
+                            <option value="all">Todas las Ramas (4)</option>
+                            <option value="assault">⚔️ Protocolo Asalto (13)</option>
+                            <option value="defense">🛡️ Blindaje Estructural (13)</option>
+                            <option value="elemental">⚡ Sintonía Elemental (12)</option>
+                            <option value="logistics">🛠️ Logística y Táctica (12)</option>
+                        </select>
+
+                        <select id="skill-tier-filter" class="sim-select" style="width: auto;">
+                            <option value="all">Todos los Tiers (1-4)</option>
+                            <option value="1">Tier 1 (100 - 125 ⚙️)</option>
+                            <option value="2">Tier 2 (200 - 300 ⚙️)</option>
+                            <option value="3">Tier 3 (325 - 450 ⚙️)</option>
+                            <option value="4">Tier 4 (500 - 550 ⚙️)</option>
+                        </select>
+
+                        <input type="text" id="skill-search-input" class="wiki-search-input" placeholder="Buscar pasiva..." style="width: 220px;">
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div id="skill-total-scrap" class="skill-summary-counter">0 ⚙️ / 14.525 ⚙️ (0 de 50)</div>
+                        <button type="button" id="skill-reset-sim" class="btn-repo-link" style="padding: 0.45rem 0.75rem;">Limpiar</button>
+                    </div>
+                </div>
+
+                <div id="skill-tree-grid" class="skill-tree-grid"></div>
+            </section>
+
+            <!-- ==========================================================================
+                 11. ARQUITECTURA & SUPABASE
+                 ========================================================================== -->
+            <section id="sec-architecture" class="wiki-section">
+                <h2><span>💾</span> 11. Arquitectura Técnica & Sincronización</h2>
+
+                <p>
+                    Para garantizar una experiencia competitiva transparente, evitar trampas en el cliente y soportar partidas multisesión, Cyber-Elemental implementa una arquitectura orientada a la nube con <strong>Cero LocalStorage</strong> para datos de progresión sensible:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Tabla en Supabase</th>
+                                <th>Propósito Táctico</th>
+                                <th>Seguridad (Row Level Security)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>public.player_profiles</code></td>
+                                <td>Almacena <code>global_scrap</code> acumulado y el arreglo JSON <code>unlocked_skills</code>.</td>
+                                <td>Solo lectura y modificación por el <code>auth.uid() = user_id</code> propietario.</td>
+                            </tr>
+                            <tr>
+                                <td><code>public.saved_tower_runs</code></td>
+                                <td>Checkpoint seguro de expedición tras vencer al jefe de la Torre 1 o Torre 2.</td>
+                                <td>Se purga automáticamente en caso de Game Over.</td>
+                            </tr>
+                            <tr>
+                                <td><code>public.player_cosmetics</code></td>
+                                <td>Gestión de skins cosméticas cibernéticas desbloqueadas.</td>
+                                <td>Restringido por usuario autenticado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-box tip">
+                    <div class="callout-title">Soporte Anónimo e Invitados</div>
+                    Los jugadores no registrados operan con sesiones anónimas en Supabase ligadas a un <code>user_id</code> de base de datos. Al terminar una expedición, pueden vincular su correo sin perder la chatarra ni las habilidades compradas.
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="wiki-footer">
+                <div class="footer-links">
+                    <a href="https://github.com/Explodingcat/WikiCiberElemental" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+                    <span>•</span>
+                    <a href="https://github.com/Explodingcat/CiberElemental" target="_blank" rel="noopener noreferrer">Juego Principal</a>
+                </div>
+                <p>CYBER-ELEMENTAL WIKI // Base de Conocimiento Táctica para GitHub Pages // MIT License</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Botón Volver Arriba Flotante -->
+    <button id="btn-back-to-top" class="btn-back-to-top" aria-label="Volver arriba">↑</button>
+
+    <!-- Scripts Modulares -->
+    <script src="js/wiki-data.js"></script>
+    <script src="js/wiki-simulator.js"></script>
+    <script src="js/wiki-search.js"></script>
+    <script src="js/wiki-main.js"></script>
+</body>
+</html>

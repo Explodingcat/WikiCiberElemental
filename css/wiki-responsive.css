@@ -1,0 +1,177 @@
+/* ==========================================================================
+   CYBER-ELEMENTAL WIKI // RESPONSIVE DESIGN & MOBILE DRAWER
+   ========================================================================== */
+
+/* Fondo oscurecido para el drawer en móviles */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.sidebar-locked {
+    overflow: hidden;
+}
+
+/* Pantallas Medianas y Tablets (<= 1024px) */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 260px;
+    }
+
+    .wiki-content {
+        padding: 2rem 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .elites-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pantallas Móviles y Tablets Pequeñas (<= 992px) */
+@media (max-width: 992px) {
+    .btn-nav-toggle {
+        display: block;
+    }
+
+    .topbar-search-container {
+        width: 260px;
+    }
+
+    .wiki-sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: -320px;
+        width: 300px;
+        height: calc(100vh - var(--header-height));
+        z-index: 999;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .wiki-sidebar.open {
+        left: 0;
+    }
+
+    .wiki-content {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .sim-controls-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .sim-divider-arrow {
+        transform: rotate(90deg);
+        margin: -0.5rem 0;
+    }
+}
+
+/* Pantallas Móviles Pequeñas (<= 640px) */
+@media (max-width: 640px) {
+    :root {
+        --header-height: 60px;
+    }
+
+    .wiki-topbar {
+        padding: 0 1rem;
+    }
+
+    .wiki-logo {
+        font-size: 1.05rem;
+    }
+
+    .wiki-version-tag {
+        display: none;
+    }
+
+    .topbar-search-container {
+        width: 170px;
+    }
+
+    .wiki-search-input {
+        font-size: 0.9rem;
+        padding: 0.45rem 1.8rem 0.45rem 2.2rem;
+    }
+
+    .search-kbd-hint {
+        display: none;
+    }
+
+    .btn-repo-link span {
+        display: none;
+    }
+
+    .btn-repo-link {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .wiki-hero-banner {
+        padding: 2rem 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-quick-actions {
+        flex-direction: column;
+    }
+
+    .hero-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .skill-tree-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .skill-filters-group {
+        flex-direction: column;
+    }
+
+    .skill-summary-counter {
+        text-align: center;
+    }
+
+    .elite-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .elite-tactics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 38px;
+        height: 38px;
+    }
+}
