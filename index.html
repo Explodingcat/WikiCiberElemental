@@ -136,9 +136,39 @@
                     Los 4 elementos interactúan en un ciclo cerrado de efectividad táctica estricta:
                 </p>
 
-                <div class="callout-box">
-                    <div class="callout-title">Ciclo Elemental</div>
-                    $$\text{Fuego (🔥)} \longrightarrow \text{Tierra (🪨)} \longrightarrow \text{Aire (💨)} \longrightarrow \text{Agua (💦)} \longrightarrow \text{Fuego (🔥)}$$
+                <div class="elemental-cycle-card">
+                    <div class="cycle-flow-container">
+                        <div class="cycle-node badge-FUEGO">
+                            <span class="cycle-node-icon">🔥</span>
+                            <span class="cycle-node-name">Fuego</span>
+                        </div>
+                        <div class="cycle-arrow" aria-hidden="true">➔</div>
+                        <div class="cycle-node badge-TIERRA">
+                            <span class="cycle-node-icon">🪨</span>
+                            <span class="cycle-node-name">Tierra</span>
+                        </div>
+                        <div class="cycle-arrow" aria-hidden="true">➔</div>
+                        <div class="cycle-node badge-AIRE">
+                            <span class="cycle-node-icon">💨</span>
+                            <span class="cycle-node-name">Aire</span>
+                        </div>
+                        <div class="cycle-arrow" aria-hidden="true">➔</div>
+                        <div class="cycle-node badge-AGUA">
+                            <span class="cycle-node-icon">💦</span>
+                            <span class="cycle-node-name">Agua</span>
+                        </div>
+                        <div class="cycle-arrow" aria-hidden="true">➔</div>
+                        <div class="cycle-node badge-FUEGO">
+                            <span class="cycle-node-icon">🔥</span>
+                            <span class="cycle-node-name">Fuego</span>
+                        </div>
+                    </div>
+                    <div class="cycle-legend-list">
+                        <div class="legend-item"><span class="badge-elem badge-FUEGO">🔥 Fuego</span> vence a <span class="badge-elem badge-TIERRA">🪨 Tierra</span> <strong>(+35% Daño)</strong></div>
+                        <div class="legend-item"><span class="badge-elem badge-TIERRA">🪨 Tierra</span> vence a <span class="badge-elem badge-AIRE">💨 Aire</span> <strong>(+35% Daño)</strong></div>
+                        <div class="legend-item"><span class="badge-elem badge-AIRE">💨 Aire</span> vence a <span class="badge-elem badge-AGUA">💦 Agua</span> <strong>(+35% Daño)</strong></div>
+                        <div class="legend-item"><span class="badge-elem badge-AGUA">💦 Agua</span> vence a <span class="badge-elem badge-FUEGO">🔥 Fuego</span> <strong>(+35% Daño)</strong></div>
+                    </div>
                 </div>
 
                 <div class="table-responsive">
@@ -648,8 +678,18 @@
                 <p>
                     Todo cofre divide su contenido equitativamente en una tirada inicial de <strong>50% Arma Mejorada (+1)</strong> o <strong>50% Chip Elemental (💾)</strong>:
                 </p>
-                <div class="callout-box">
-                    $$\text{Probabilidad de un Arma Específica en Cofre} = 50\% \times 25\% \text{ (tipo)} \times 25\% \text{ (elemento)} = \mathbf{3.125\%} \quad (1 \text{ de cada } 32 \text{ cofres})$$
+                <div class="cyber-formula-box">
+                    <div class="formula-title">📐 Probabilidad de Obtener un Arma Específica en Cofre</div>
+                    <div class="formula-equation">
+                        <span class="formula-term">50% <small>(Tipo Botín)</small></span>
+                        <span class="formula-op">×</span>
+                        <span class="formula-term">25% <small>(Tipo de Arma)</small></span>
+                        <span class="formula-op">×</span>
+                        <span class="formula-term">25% <small>(Elemento)</small></span>
+                        <span class="formula-op">=</span>
+                        <span class="formula-result">3.125%</span>
+                    </div>
+                    <div class="formula-note">Equivale estadísticamente a <strong>1 de cada 32 cofres abiertos</strong>.</div>
                 </div>
 
                 <h3 style="margin-top: 2rem;">Distribución del Mercado Negro (🛒)</h3>
