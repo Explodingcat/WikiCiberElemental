@@ -234,6 +234,49 @@
             `).join('');
         }
 
+        // Render Sirvientes de Jefes
+        const minionsContainer = document.getElementById('boss-minions-grid');
+        if (minionsContainer && data.BOSS_MINIONS) {
+            minionsContainer.innerHTML = data.BOSS_MINIONS.map(minion => `
+                <div class="elite-card elite-${minion.element.toLowerCase()}" id="minion-${minion.id}">
+                    <div class="elite-card-header">
+                        <div class="elite-avatar-box">
+                            <span class="elite-avatar-emoji">${minion.emoji}</span>
+                        </div>
+                        <div class="elite-title-box">
+                            <span class="elite-badge badge-${minion.element}">${data.ELEMENTS[minion.element]?.icon || ''} ${minion.element}</span>
+                            <h3 class="elite-name">${minion.name}</h3>
+                            <div class="elite-role-subtitle">${minion.role}</div>
+                        </div>
+                    </div>
+
+                    <div class="elite-stats-strip">
+                        <div class="elite-stat-item"><span>HP:</span> <strong>${minion.stats.hp}</strong></div>
+                        <div class="elite-stat-item"><span>ATQ:</span> <strong>${minion.stats.atk}</strong></div>
+                        <div class="elite-stat-item"><span>VEL:</span> <strong>${minion.stats.spd}</strong></div>
+                        <div class="elite-stat-item"><span>ESQ:</span> <strong>${minion.stats.dodge}</strong></div>
+                    </div>
+
+                    <div class="elite-skills-block">
+                        <h5>⚡ Técnicas y Habilidades Especiales</h5>
+                        ${minion.skills.map(s => `
+                            <div class="elite-skill-box">
+                                <div class="skill-name-tag">${s.name}</div>
+                                <div class="skill-desc-text">${s.desc}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="elite-tactics-grid">
+                        <div class="tactic-box danger-box" style="grid-column: 1 / -1;">
+                            <strong>💡 Sinergia Táctica con TITAN-X:</strong>
+                            <p>${minion.strategy}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Render Jefes de Sector
         const bossesContainer = document.getElementById('bosses-grid');
         if (bossesContainer && data.BOSSES) {
@@ -249,6 +292,7 @@
                     </div>
 
                     <div class="boss-stats-text"><strong>📊 Perfil:</strong> ${boss.stats}</div>
+                    ${boss.partyBattle ? `<div class="boss-party-battle-text"><strong>⚔️ Formato:</strong> ${boss.partyBattle}</div>` : ''}
 
                     <div class="boss-skills-list">
                         <strong>Técnicas Especiales:</strong>
@@ -342,6 +386,98 @@
         }
     }
 
+    // -------------------------------------------------------------
+    // 7. RENDERIZADO DEL SISTEMA OVERDRIVE
+    // -------------------------------------------------------------
+    function renderOverdrive() {
+        const ultimatesContainer = document.getElementById('overdrive-ultimates-grid');
+        if (ultimatesContainer && data.OVERDRIVE && data.OVERDRIVE.ultimates) {
+            ultimatesContainer.innerHTML = data.OVERDRIVE.ultimates.map(ult => `
+                <div class="overdrive-ult-card border-${ult.element.toLowerCase()}">
+                    <div class="ult-card-header">
+                        <span class="badge-elem badge-${ult.element}">${data.ELEMENTS[ult.element]?.icon || ''} ${ult.robot}</span>
+                        <h4 class="ult-name">${ult.name}</h4>
+                    </div>
+                    <p class="ult-desc">${ult.desc}</p>
+                    <div class="ult-footer">
+                        <span class="ult-cost-badge">⚡ Requiere: 100% Overdrive</span>
+                        <span class="ult-unlock-badge">🔓 Desbloqueo: Nivel 5</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // -------------------------------------------------------------
+    // 8. RENDERIZADO DEL CATÁLOGO DE RELIQUIAS (34)
+    // -------------------------------------------------------------
+    function renderRelics() {
+        const container = document.getElementById('relics-catalog-grid');
+        const catFilter = document.getElementById('relic-category-filter');
+        const rarityFilter = document.getElementById('relic-rarity-filter');
+        const searchInput = document.getElementById('relic-search-input');
+        const counterEl = document.getElementById('relic-counter');
+        if (!container || !data || !data.RELICS) return;
+
+        function updateRelicsList() {
+            const cat = catFilter ? catFilter.value : 'all';
+            const rarity = rarityFilter ? rarityFilter.value : 'all';
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+            const filtered = data.RELICS.filter(relic => {
+                if (cat !== 'all' && relic.category !== cat) return false;
+                if (rarity !== 'all' && relic.rarity !== rarity) return false;
+                if (query) {
+                    const str = `${relic.name} ${relic.desc} ${relic.lore} ${relic.category} ${relic.rarity}`.toLowerCase();
+                    if (!str.includes(query)) return false;
+                }
+                return true;
+            });
+
+            if (counterEl) {
+                counterEl.textContent = `${filtered.length} de ${data.RELICS.length} Reliquias`;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results-card" style="grid-column: 1 / -1;">
+                        <span class="no-results-icon">🔍</span>
+                        <h4>No se encontraron reliquias con los filtros seleccionados</h4>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(relic => {
+                const rarityInfo = data.RELIC_RARITIES[relic.rarity] || { name: relic.rarity, color: '#66fcf1' };
+                const catInfo = data.RELIC_CATEGORIES[relic.category] || { name: relic.category, icon: '✨' };
+
+                return `
+                    <div class="relic-card rarity-${relic.rarity.toLowerCase()}" id="relic-${relic.id}">
+                        <div class="relic-header">
+                            <div class="relic-icon-wrapper">${relic.icon}</div>
+                            <div class="relic-meta">
+                                <div class="relic-badges-row">
+                                    <span class="badge-rarity badge-rarity-${relic.rarity.toLowerCase()}">${rarityInfo.name}</span>
+                                    <span class="relic-cat-tag">${catInfo.icon} ${catInfo.name}</span>
+                                </div>
+                                <h4 class="relic-name">${relic.name}</h4>
+                            </div>
+                        </div>
+                        <div class="relic-effect">${relic.desc}</div>
+                        <div class="relic-lore">"${relic.lore}"</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        if (catFilter) catFilter.addEventListener('change', updateRelicsList);
+        if (rarityFilter) rarityFilter.addEventListener('change', updateRelicsList);
+        if (searchInput) searchInput.addEventListener('input', updateRelicsList);
+
+        updateRelicsList();
+    }
+
     function escapeHTML(str) {
         return str.replace(/[&<>'"]/g, tag => ({
             '&': '&amp;',
@@ -353,7 +489,7 @@
     }
 
     // -------------------------------------------------------------
-    // 7. INICIALIZACIÓN GLOBAL
+    // 9. INICIALIZACIÓN GLOBAL
     // -------------------------------------------------------------
     document.addEventListener('DOMContentLoaded', () => {
         initMobileNav();
@@ -362,5 +498,7 @@
         renderMysteryEvents();
         renderBestiary();
         renderArsenal();
+        renderOverdrive();
+        renderRelics();
     });
 })();

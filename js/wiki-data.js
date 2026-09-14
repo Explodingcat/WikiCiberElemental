@@ -17,7 +17,7 @@ window.WIKI_DATA = {
             glow: "rgba(255, 107, 107, 0.7)",
             beats: "TIERRA",
             weakTo: "AGUA",
-            description: "Poder ofensivo concentrado, ignición y quemaduras continuas."
+            description: "Poder ofensivo concentrado, ignición y quemaduras continuas. Afinidad de arma: +15% ATQ Base y +15% daño extra contra objetivos con Marca o Quemadura."
         },
         AGUA: {
             name: "Agua",
@@ -26,7 +26,7 @@ window.WIKI_DATA = {
             glow: "rgba(72, 219, 251, 0.7)",
             beats: "FUEGO",
             weakTo: "AIRE",
-            description: "Barreras energéticas, mitigación absoluta y control hidrodinámico."
+            description: "Barreras energéticas, mitigación absoluta y control hidrodinámico. Afinidad de arma: +15% HP Máximo y +25% a la potencia y absorción de barreras/escudos."
         },
         TIERRA: {
             name: "Tierra",
@@ -35,7 +35,7 @@ window.WIKI_DATA = {
             glow: "rgba(254, 202, 87, 0.7)",
             beats: "AIRE",
             weakTo: "FUEGO",
-            description: "Blindaje colosal, provocación de objetivos y reflejo de daño."
+            description: "Blindaje colosal, provocación de objetivos y reflejo de daño. Afinidad de arma: +25% HP Máximo y -10% de reducción pasiva permanente de todo daño recibido."
         },
         AIRE: {
             name: "Aire",
@@ -44,7 +44,7 @@ window.WIKI_DATA = {
             glow: "rgba(200, 214, 229, 0.7)",
             beats: "AGUA",
             weakTo: "TIERRA",
-            description: "Velocidad extrema de iniciativa, evasión cuántica y prioridad de turno."
+            description: "Velocidad extrema de iniciativa, evasión cuántica y prioridad de turno. Afinidad de arma: +15% ATQ Base, +2 de Velocidad (SPD) fija y +10% de Esquiva pasiva."
         },
         NEUTRO: {
             name: "Neutro",
@@ -53,7 +53,7 @@ window.WIKI_DATA = {
             glow: "rgba(131, 149, 167, 0.5)",
             beats: null,
             weakTo: null,
-            description: "Sin ventajas ni desventajas directas (1.0x fijo). Elemento exclusivo de jefes de sector."
+            description: "Sin ventajas ni desventajas directas (1.0x fijo). Elemento de apoyo y de colosos cuánticos avanzados."
         },
         LEGENDARIO: {
             name: "Legendario",
@@ -62,7 +62,7 @@ window.WIKI_DATA = {
             glow: "rgba(255, 215, 0, 0.8)",
             beats: null,
             weakTo: null,
-            description: "Afinidad universal para cualquier robot. Daño 1.15x sin penalizaciones contra ningún elemento."
+            description: "Afinidad universal para cualquier robot (+25% ATQ y +15% HP Máximo). Daño 1.15x sin penalizaciones contra ningún elemento."
         }
     },
 
@@ -282,18 +282,18 @@ window.WIKI_DATA = {
             emoji: "🦍",
             element: "TIERRA",
             role: "Tanque Colosal // Control de Masas Total en Área",
-            stats: { hp: "Muy Alto", atk: "28 Base", spd: "3 (Muy Lento)", dodge: "0%" },
+            stats: { hp: "Muy Alto (~220+ Nv10)", atk: "28 Base (~39 Nv10)", spd: "3 (Muy Lento)", dodge: "0%" },
             skills: [
                 {
-                    name: "💥 Terremoto Cataclísmico (CD: 4)",
-                    desc: "Golpea a todos los rivales en área (1.2x daño), aplica ATURDIMIENTO (STUN) garantizado de 1 turno a todo el escuadrón y adhiere 3 Marcas de Tierra a cada objetivo."
+                    name: "💥 Terremoto Cataclísmico (CD: 4 - Apertura Turno 1)",
+                    desc: "Se ejecuta de inmediato en el Turno 1: Golpea a todos los rivales en área (1.2x daño), aplica ATURDIMIENTO (STUN) garantizado de 1 turno a todo el escuadrón aliado y estampa 3 Marcas de Tierra a cada objetivo."
                 },
                 {
                     name: "⚔️ Impacto Tectónico (CD: 0)",
-                    desc: "Golpe demoledor individual de 1.5x potencia con daño físico telúrico puro."
+                    desc: "Golpe frontal demoledor individual de 1.5x potencia con daño físico telúrico puro."
                 }
             ],
-            danger: "Si no es aturdido o derrotado antes de su 4º turno, paralizará a todo tu escuadrón facilitando aniquilaciones en cadena.",
+            danger: "Apertura letal en Turno 1 con Stun masivo garantizado. Si no se purga o mitiga con barreras, deja al escuadrón indefenso.",
             recruitBenefit: "El controlador de masas supremo. Reclutarlo otorga la mejor apertura grupal para frenar hordas y preparar Cristalizaciones o Tormentas de Arena."
         },
         {
@@ -302,7 +302,7 @@ window.WIKI_DATA = {
             emoji: "👹",
             element: "FUEGO",
             role: "Daño Hiper-Creciente // Amenaza Crítica en Agonía",
-            stats: { hp: "Alto", atk: "30 Base (+Escala Agónica)", spd: "10 (Media)", dodge: "5%" },
+            stats: { hp: "Alto (~180+ Nv10)", atk: "30 Base (+Escala Agónica)", spd: "10 (Media)", dodge: "5%" },
             skills: [
                 {
                     name: "🔥 Furia Sobrecalentada (Pasiva Continua)",
@@ -310,7 +310,7 @@ window.WIKI_DATA = {
                 },
                 {
                     name: "⚔️ Tajo Incandescente (CD: 0)",
-                    desc: "Ataque básico de fuego que amplifica brutalmente la furia agónica acumulada, logrando impactos de daño críticos masivos."
+                    desc: "Ataque básico de fuego (1.2x) que amplifica brutalmente la furia agónica acumulada, logrando impactos de daño críticos masivos."
                 }
             ],
             danger: "Dejarlo con vida residual (ej: 10-20% HP) provocará que su siguiente ataque destruya a cualquier robot aliado de un solo golpe crítico.",
@@ -322,18 +322,18 @@ window.WIKI_DATA = {
             emoji: "🥷",
             element: "AIRE",
             role: "Asesino Espectral // Evasión Absoluta y Ejecución",
-            stats: { hp: "30 Base (Mínimo)", atk: "26 Base", spd: "22+ (Supersónico)", dodge: "40% Base" },
+            stats: { hp: "Bajo-Medio (~130 Nv10)", atk: "26 Base (~36 Nv10)", spd: "22+ (Supersónico)", dodge: "40% Base" },
             skills: [
                 {
-                    name: "👻 Desfase Cuántico (CD: 3)",
-                    desc: "Activa un escudo de desfase que eleva su Evasión al 100% durante 1 turno completo (inmunidad total a ataques directos)."
+                    name: "👻 Desfase Cuántico (CD: 3 - Apertura Turno 1)",
+                    desc: "Se ejecuta de inmediato en el Turno 1: Activa un escudo de desfase que eleva su Evasión al 100% durante 1 turno completo (inmunidad total a ataques directos)."
                 },
                 {
                     name: "🗡️ Tajo Asesino de Frecuencia (CD: 0)",
                     desc: "Ataque quirúrgico con multiplicador demoledor (1.8x - 2.2x) que ignora una gran porción de las barreras enemigas."
                 }
             ],
-            danger: "Ataca primero debido a su velocidad, se vuelve intangible en turnos clave y neutraliza objetivos clave antes de que puedan defenderse.",
+            danger: "Ataca primero debido a su velocidad (SPD 22+), se vuelve intangible en turnos clave y neutraliza objetivos clave antes de que puedan defenderse.",
             recruitBenefit: "El mejor ejecutor quirúrgico para aniquilar amenazas antes de que lancen habilidades en área."
         },
         {
@@ -343,15 +343,15 @@ window.WIKI_DATA = {
             element: "AGUA",
             secondaryElement: "AIRE",
             role: "Controlador de Velocidad // Auto-Detonador de Combos",
-            stats: { hp: "Alto", atk: "20 Base", spd: "7 (Media-Baja)", dodge: "5%" },
+            stats: { hp: "Alto (~190 Nv10)", atk: "20 Base (~28 Nv10)", spd: "7 (Media-Baja)", dodge: "5%" },
             skills: [
                 {
-                    name: "❄️ Ventisca Cero Absoluto (CD: 3)",
-                    desc: "Ataque de hielo en área a todo el escuadrón: reduce la velocidad de todos los enemigos a 1 (SPD = 1) por 2 turnos y adhiere 3 Marcas de Agua."
+                    name: "❄️ Ventisca Cero Absoluto (CD: 3 - Apertura Turno 1)",
+                    desc: "Se ejecuta de inmediato en el Turno 1: Ataque de hielo en área a todo el escuadrón: reduce la velocidad de todos los enemigos a 1 (SPD = 1) por 2 turnos y adhiere 3 Marcas de Agua."
                 },
                 {
                     name: "💨 Ráfaga Gélida (Básico Tipo Aire)",
-                    desc: "Ataque clasificado como elemento Aire. Al impactar sobre objetivos con su propia Marca de Agua previa, ¡detona automáticamente el combo de VENTISCA! (1.35x daño + Congelación)."
+                    desc: "Ataque clasificado como elemento Aire (1.0x). Al impactar sobre objetivos con su propia Marca de Agua previa, ¡detona automáticamente el combo de VENTISCA! (1.35x daño + Congelación)."
                 }
             ],
             danger: "Arrebata por completo la iniciativa del combate congelando a todo tu escuadrón al fondo de la ronda mientras detona sus propios combos.",
@@ -360,7 +360,7 @@ window.WIKI_DATA = {
     ],
 
     // -------------------------------------------------------------
-    // 5. ENEMIGOS REGULARES Y JEFES
+    // 5. ENEMIGOS REGULARES, JEFES Y SIRVIENTES
     // -------------------------------------------------------------
     REGULAR_ENEMIES: [
         { name: "Dron Kamikaze", icon: "💣", elem: "FUEGO / NEUTRO", desc: "Sonda de alta velocidad con microprocesador suicida que detona causando daño masivo si no es eliminado a tiempo." },
@@ -378,34 +378,37 @@ window.WIKI_DATA = {
             name: "TITAN-X",
             title: "Coloso Defensor del Núcleo (Torre 1 - Piso 10)",
             icon: "👑",
-            element: "NEUTRO",
-            stats: "350 HP Base (~507 HP en Nivel 10) // 26 ATQ Base (~37 Nv10)",
+            element: "FUEGO",
+            stats: "350 HP Base (~507 HP en Nivel 10) // 26 ATQ Base (~37 Nv10) // VEL: 3 // ESQ: 10% // PREC: 100% // CRÍT: 12%",
+            partyBattle: "Combate 3v3 contra TITAN-X asistido por 2 sirvientes: 🪼 Ciber-Medusa y 🛰️ Drone Catalizador.",
             skills: [
-                "Golpe Titánico: 1.4x Daño sísmico perforante.",
-                "Pulso PEM Titánico (CD 3): 0.8x Daño en área a todo el escuadrón y destruye todas las barreras y escudos.",
-                "Protocolo Exterminio (CD 4): 2.2x Daño balístico infalible (fijación absoluta: no puede fallar ni ser esquivado por Desfase Cuántico o Evasión)."
+                "Golpe Titánico (CD 0): 1.4x Daño ígneo penetrante con sacudida térmica.",
+                "Pulso PEM Titánico (CD 3): 0.8x Daño en área a todo el escuadrón, destruye todas las barreras y escudos activos.",
+                "Protocolo Exterminio (CD 4): 2.2x Daño térmico balístico infalible (fijación absoluta: ignora evasión y no puede fallar)."
             ],
-            reward: "Desbloquea la Llave Cuántica 🔑 hacia la Torre 2 y garantiza 1 Arma Legendaria Dorada 👑."
+            reward: "Desbloquea la Llave Cuántica 🔑 hacia la Torre 2 y garantiza 1 Arma Legendaria Dorada 👑 + 500 XP fija."
         },
         {
             name: "TITAN-OMEGA",
             title: "Núcleo Cuántico Supremo (Torre 2 - Piso 20)",
             icon: "⚛️",
             element: "NEUTRO",
-            stats: "420 HP Base (~819 HP en Nivel 20) // 28 ATQ Base (~54 Nv20)",
+            stats: "420 HP Base (~819 HP en Nivel 20) // 28 ATQ Base (~54 Nv20) // VEL: 5 // ESQ: 12% // PREC: 100% // CRÍT: 15%",
+            partyBattle: "Combate 3v3 contra el núcleo cuántico potenciado y drones centinelas de soporte.",
             skills: [
-                "Golpe Cuántico: 1.5x Daño electromagnético.",
+                "Golpe Cuántico: 1.5x Daño electromagnético puro.",
                 "Sobrecarga Cuántica (CD 3): 1.0x Daño en área que destruye escudos y aplica Rompearmaduras (-25% Def).",
-                "Protocolo Aniquilación (CD 4): 2.5x Daño devastador infalible con sacudida sísmica."
+                "Protocolo Aniquilación (CD 4): 2.5x Daño devastador infalible con sacudida dimensional."
             ],
-            reward: "Desbloquea la Llave de Singularidad 🗝️ hacia la Torre 3 y garantiza 1 Arma Legendaria Dorada 👑."
+            reward: "Desbloquea la Llave de Singularidad 🗝️ hacia la Torre 3 y garantiza 1 Arma Legendaria Dorada 👑 + 500 XP fija."
         },
         {
             name: "SINGULARIDAD-ZERO",
             title: "La Entidad Absoluta (Torre 3 - Piso 30)",
             icon: "🌌",
             element: "NEUTRO",
-            stats: "500 HP Base (~1225 HP en Nivel 30) // 32 ATQ Base (~78 Nv30)",
+            stats: "500 HP Base (~1225 HP en Nivel 30) // 32 ATQ Base (~78 Nv30) // VEL: 8 // ESQ: 15% // PREC: 100% // CRÍT: 20%",
+            partyBattle: "El encuentro final de la campaña 3v3 en el vórtice de singularidad.",
             skills: [
                 "Colapso Gravitatorio: 1.6x Daño por aplastamiento dimensional.",
                 "Tormenta del Vacío (CD 3): 1.2x Daño en área total, purga barreras y deja conmoción.",
@@ -459,6 +462,47 @@ window.WIKI_DATA = {
         }
     ],
 
+    BOSS_MINIONS: [
+        {
+            id: "ciber_medusa",
+            name: "Ciber-Medusa",
+            emoji: "🪼",
+            element: "AGUA",
+            role: "Sirviente Táctico // Control de Velocidad y Aplicador de Agua",
+            stats: { hp: "95 Base (~137 Nv10)", atk: "12 Base (~17 Nv10)", spd: "10 (Rápida)", dodge: "5%", acc: "95%", crit: "5%" },
+            skills: [
+                {
+                    name: "🌊 Salpicadura Corrosiva (CD: 3 - Turno 1 Inmediato)",
+                    desc: "Ataque en área (AoE) de 0.75x a todo el escuadrón aliado. Aplica Marca de Agua (3 turnos) y Ralentización (-50% SPD por 1 turno). Prepara combos de Vaporización 1.5x para TITAN-X."
+                },
+                {
+                    name: "💧 Chorro de Hidro-Plasma (CD: 0)",
+                    desc: "Disparo individual de 1.0x potencia de daño directo de Agua que renueva la Marca de Agua (3 turnos)."
+                }
+            ],
+            strategy: "Actúa antes que TITAN-X (SPD 10 vs 3) para inundar a tu escuadrón con Marcas de Agua, permitiendo que TITAN-X detone Vaporizaciones brutales de 1.5x daño."
+        },
+        {
+            id: "drone_catalizador",
+            name: "Drone Catalizador",
+            emoji: "🛰️",
+            element: "NEUTRO",
+            role: "Sirviente Táctico // Soporte Defensivo y Amplificador Térmico",
+            stats: { hp: "85 Base (~123 Nv10)", atk: "10 Base (~14 Nv10)", spd: "10 (Rápida)", dodge: "0%", acc: "100%", crit: "0%" },
+            skills: [
+                {
+                    name: "🛡️ Matriz de Escudo Térmico (CD: 3 - Activa en Turno 2)",
+                    desc: "Proyecta sobre TITAN-X un Escudo de Plasma del 20% de su HP Máximo (~101 HP de escudo) y le otorga el estado de Sobrealimentación Térmica (+20% ATQ) durante 2 turnos."
+                },
+                {
+                    name: "🎯 Láser de Fijación (CD: 0)",
+                    desc: "Disparo balístico individual de 0.9x con 25% de probabilidad de aplicar Rompearmaduras (-25% DEF por 2 turnos) al objetivo aliado."
+                }
+            ],
+            strategy: "Prioridad táctica de eliminación: destruirlo rápido evita que proyecte escudos sobre TITAN-X ni aumente su poder de ataque."
+        }
+    ],
+
     // -------------------------------------------------------------
     // 6. ARMAS, CHIPS Y SUMINISTROS
     // -------------------------------------------------------------
@@ -470,7 +514,7 @@ window.WIKI_DATA = {
             basePassive: "25% de probabilidad de asestar un segundo ataque consecutivo en el mismo turno.",
             upgradedPassive: "40% de probabilidad de doble ataque consecutivo en el mismo turno.",
             scrapValue: "+20 ⚙️ al desmantelar",
-            affinityBonus: "+20% HP Máximo y +20% ATQ si coincide con el elemento del robot portador."
+            affinityBonus: "Afinidad Especializada según Elemento: Fuego (+15% ATQ / +15% a Marcados), Agua (+15% HP / +25% Escudos), Tierra (+25% HP / -10% Daño recibido), Aire (+15% ATQ, +2 VEL, +10% Esquiva)."
         },
         {
             id: "hacha",
@@ -479,7 +523,7 @@ window.WIKI_DATA = {
             basePassive: "+10% ATQ base pasivo, 20% prob. de Rompearmaduras (-25% Def, 2T) y perfora el 50% de barreras enemigas. Verdugo: +35% Daño a enemigos con ≤40% HP.",
             upgradedPassive: "Perfora el 75% de defensas y barreras. Verdugo Potenciado: +45% Daño a enemigos con ≤40% HP. Conserva el +10% ATQ y 20% Rompearmaduras.",
             scrapValue: "+20 ⚙️ al desmantelar",
-            affinityBonus: "+20% HP Máximo y +20% ATQ si coincide con el elemento del robot portador."
+            affinityBonus: "Afinidad Especializada según Elemento: Fuego (+15% ATQ / +15% a Marcados), Agua (+15% HP / +25% Escudos), Tierra (+25% HP / -10% Daño recibido), Aire (+15% ATQ, +2 VEL, +10% Esquiva)."
         },
         {
             id: "baculo",
@@ -488,7 +532,7 @@ window.WIKI_DATA = {
             basePassive: "Repara automáticamente un 5% del HP Máximo del portador al final de cada turno (potenciado por afinidad de Agua).",
             upgradedPassive: "Repara un 7% del HP Máximo del portador + cura un 5% HP al aliado más herido. 20% de probabilidad de reducir 1 turno de Cooldown a una habilidad propia o aliada.",
             scrapValue: "+20 ⚙️ al desmantelar",
-            affinityBonus: "+20% HP Máximo y +20% ATQ si coincide con el elemento del robot portador."
+            affinityBonus: "Afinidad Especializada según Elemento: Fuego (+15% ATQ / +15% a Marcados), Agua (+15% HP / +25% Escudos), Tierra (+25% HP / -10% Daño recibido), Aire (+15% ATQ, +2 VEL, +10% Esquiva)."
         },
         {
             id: "espada",
@@ -497,7 +541,7 @@ window.WIKI_DATA = {
             basePassive: "+15% Daño base pasivo y +10% de Golpe Crítico en ataques básicos. Críticos activan Racha (+10% ATQ temporal).",
             upgradedPassive: "+30% Daño base pasivo y +20% de Golpe Crítico en ataques básicos. Críticos activan Racha (+10% ATQ temporal).",
             scrapValue: "+20 ⚙️ al desmantelar",
-            affinityBonus: "+20% HP Máximo y +20% ATQ si coincide con el elemento del robot portador."
+            affinityBonus: "Afinidad Especializada según Elemento: Fuego (+15% ATQ / +15% a Marcados), Agua (+15% HP / +25% Escudos), Tierra (+25% HP / -10% Daño recibido), Aire (+15% ATQ, +2 VEL, +10% Esquiva)."
         },
         {
             id: "legendaria",
@@ -506,7 +550,7 @@ window.WIKI_DATA = {
             basePassive: "Afinidad Universal: Otorga +25% ATQ y +15% HP Máximo a cualquier robot sin importar su elemento nativo.",
             upgradedPassive: "1.15x Daño Universal sin desventajas elementales. Al forjarse a +1 suma +20% de Golpe Crítico adicional. Otorga +100 ⚙️ al desmantelar.",
             scrapValue: "+100 ⚙️ al desmantelar",
-            affinityBonus: "Se activa automáticamente con cualquier elemento (Fuego, Agua, Tierra o Aire)."
+            affinityBonus: "Afinidad Universal Automática: Se activa con cualquier robot (Fuego, Agua, Tierra o Aire), otorgando +25% ATQ Base y +15% HP Máximo."
         }
     ],
 
@@ -900,5 +944,113 @@ window.WIKI_DATA = {
             { tower: "Torre 2 (Piso 18 - 20)", chance: "100.00%", note: "Todos los enemigos estándar van armados" },
             { tower: "Torre 3 (Pisos 21 - 30)", chance: "100.00%", note: "Máxima hostilidad y letalidad de armamento" }
         ]
-    }
+    },
+
+    // -------------------------------------------------------------
+    // 10. SISTEMA DE OVERDRIVE // HABILIDADES DEFINITIVAS
+    // -------------------------------------------------------------
+    OVERDRIVE: {
+        unlockLevel: 5,
+        name: "Protocolo Overdrive // Habilidades Definitivas",
+        description: "Al alcanzar el Nivel 5, los autómatas desbloquean su medidor de energía Overdrive (0% a 100%). Al llenarse al 100%, el robot puede desatar su técnica definitiva suprema.",
+        chargeMechanics: [
+            { source: "Ataque Básico o Habilidad Ejecutada", gain: "+15% Overdrive" },
+            { source: "Daño Sufrido / Absorción por Escudo", gain: "+10% Overdrive" }
+        ],
+        persistence: "Persistencia entre Combates: La barra de Overdrive NO se reinicia a 0% al ganar un combate. Toda la energía acumulada se conserva íntegramente para el siguiente piso o encuentro de la torre.",
+        ultimates: [
+            {
+                robot: "Ignis",
+                name: "Infierno Cataclísmico",
+                element: "FUEGO",
+                desc: "Detona una tormenta ígnea masiva que inflige 2.5x daño a todos los enemigos y aplica Quemadura de 3 turnos (8% HP/turno)."
+            },
+            {
+                robot: "Aqua",
+                name: "Maremoto Cuántico",
+                element: "AGUA",
+                desc: "Despliega una mega-barrera protectora de plasma sobre todo el escuadrón (anula el 100% del siguiente impacto a todos) y adhiere Marca de Agua a todos los rivales."
+            },
+            {
+                robot: "Terra",
+                name: "Falla Tectónica Absoluta",
+                element: "TIERRA",
+                desc: "Fractura dimensional que inflige 1.8x daño en área, activa Coraza de Espinas Colosal (75% mitigación y 75% reflejo) y aturde (STUN) con 60% de probabilidad."
+            },
+            {
+                robot: "Zephyr",
+                name: "Hiper-Vórtice Ciclónico",
+                element: "AIRE",
+                desc: "Ejecuta 3 cortes consecutivos de 1.2x cada uno sobre el enemigo más débil, eleva la Evasión de Zephyr al 75% por 2 turnos y reordena la cola de iniciativa."
+            }
+        ]
+    },
+
+    // -------------------------------------------------------------
+    // 11. CATÁLOGO DE RELIQUIAS Y ARTEFACTOS PASIVOS (34)
+    // -------------------------------------------------------------
+    RELIC_RARITIES: {
+        COMUN: { id: 'COMUN', name: 'Común', color: '#a4b0be', glow: 'rgba(164, 176, 190, 0.4)' },
+        RARO: { id: 'RARO', name: 'Raro', color: '#48dbfb', glow: 'rgba(72, 219, 251, 0.5)' },
+        EPICO: { id: 'EPICO', name: 'Épico', color: '#a55eea', glow: 'rgba(165, 94, 234, 0.6)' },
+        LEGENDARIO: { id: 'LEGENDARIO', name: 'Legendario', color: '#fed330', glow: 'rgba(254, 211, 48, 0.7)' },
+        CORRUPTA: { id: 'CORRUPTA', name: 'Corrupta', color: '#eb4d4b', glow: 'rgba(235, 77, 75, 0.7)' }
+    },
+
+    RELIC_CATEGORIES: {
+        ELEMENTAL: { id: 'ELEMENTAL', name: 'Sinergias Elementales', icon: '✨' },
+        WEAPONS: { id: 'WEAPONS', name: 'Armas & Maestrías', icon: '⚔️' },
+        SURVIVAL: { id: 'SURVIVAL', name: 'Supervivencia & Blindaje', icon: '🛡️' },
+        SPEED: { id: 'SPEED', name: 'Velocidad & Iniciativa', icon: '⚡' },
+        ECONOMY: { id: 'ECONOMY', name: 'Economía & Taller', icon: '⚙️' },
+        CORRUPTED: { id: 'CORRUPTED', name: 'Reliquias Corruptas', icon: '☣️' }
+    },
+
+    RELICS: [
+        // 1. SINERGIAS ELEMENTALES (10)
+        { id: 'catalizador_termico', name: 'Catalizador Térmico', category: 'ELEMENTAL', rarity: 'RARO', icon: '🔥', desc: 'Al detonar Vaporización o Tormenta Ígnea, aplica 1 acumulación de Quemadura (3 turnos) a todos los demás enemigos vivos.', lore: 'Dispositivo pirotécnico que redirecciona el exceso de calor térmico a la telemetría enemiga circundante.' },
+        { id: 'prisma_escarcha', name: 'Prisma de Escarcha', category: 'ELEMENTAL', rarity: 'COMUN', icon: '🧊', desc: 'La reacción Ventisca reduce la precisión rival en un -35% (en lugar de -20%) y extiende su duración a 3 turnos.', lore: 'Cristal ultra-refinado que intensifica la refracción del frío absoluto cegando los sensores ópticos.' },
+        { id: 'condensador_plasma', name: 'Condensador de Plasma', category: 'ELEMENTAL', rarity: 'RARO', icon: '⚡', desc: 'Al detonar Choque Térmico, además de purgar ventajas enemigas, descarga 20 de daño directo a todos los enemigos en el campo.', lore: 'Condensador de alta capacidad que descarga pulsos electromagnéticos residuales tras cada colisión térmica.' },
+        { id: 'fision_volcanica', name: 'Fisión Volcánica', category: 'ELEMENTAL', rarity: 'RARO', icon: '🌋', desc: 'La reacción Erupción reduce la defensa enemiga un -40% (en lugar de -25%) y salpica Marca de Fuego a los demás enemigos.', lore: 'Micro-reactor magmático capaz de fracturar aleaciones pesadas con calor de fisión instantáneo.' },
+        { id: 'geoda_resonancia', name: 'Geoda de Resonancia', category: 'ELEMENTAL', rarity: 'COMUN', icon: '💎', desc: 'Al activar Cristalización, el escudo de plasma generado aumenta al 35% del HP actual (en lugar del 25%).', lore: 'Estructura cristalina resonante que cataliza el impacto de tierra en una densa barrera fotónica.' },
+        { id: 'sifon_biotelurico', name: 'Sifón Biotelúrico', category: 'ELEMENTAL', rarity: 'EPICO', icon: '🌿', desc: 'La reacción Erosión drena y cura el 50% del daño infligido en HP al robot atacante (en lugar del 30%).', lore: 'Bomba osmótica que transmuta la energía cinética del impacto mineral en micro-reparaciones inmediatas.' },
+        { id: 'turbina_torbellino', name: 'Turbina Torbellino', category: 'ELEMENTAL', rarity: 'RARO', icon: '🌪️', desc: 'La Tormenta de Arena aplica Ceguera durante 2 turnos (en lugar de 1) y reduce la Velocidad (SPD) del rival en -3.', lore: 'Turboventilador de alta frecuencia que prolonga vórtices de partículas abrasivas en la arena de combate.' },
+        { id: 'inyector_nanomarcas', name: 'Inyector de Nanomarcas', category: 'ELEMENTAL', rarity: 'EPICO', icon: '💉', desc: 'Al inicio de cada combate, inyecta una Marca Elemental aleatoria (3 turnos) a todos los enemigos desplegados.', lore: 'Micro-drones invisibles que marcan las firmas electromagnéticas enemigas antes del primer cruce de disparos.' },
+        { id: 'lente_refraccion', name: 'Lente de Refracción', category: 'ELEMENTAL', rarity: 'COMUN', icon: '🔮', desc: 'Todas las Reacciones y Combinaciones Elementales infligen un +20% de daño adicional.', lore: 'Lente focalizadora que amplifica exponencialmente las ondas de choque en colisiones elementales.' },
+        { id: 'ignicion_perpetua', name: 'Ignición Perpetua', category: 'ELEMENTAL', rarity: 'EPICO', icon: '🕯️', desc: 'Si un enemigo muere teniendo Quemadura activa, transfiere su Quemadura con 3 turnos completos a otro enemigo vivo.', lore: 'Fórmula incendiaria auto-replicante que salta de un chasis destruido al siguiente hostil.' },
+
+        // 2. ARMAS Y MAESTRÍAS (8)
+        { id: 'giroscopio_frecuencia', name: 'Giroscopio de Frecuencia', category: 'WEAPONS', rarity: 'COMUN', icon: '🌀', desc: 'Los aliados que porten Daga obtienen +15% de probabilidad adicional de ejecutar un doble ataque consecutivo.', lore: 'Micro-giroscopio de aleación ligera que equilibra el filo para una cadencia de estocadas vertiginosa.' },
+        { id: 'afilador_neutrones', name: 'Afilador de Neutrones', category: 'WEAPONS', rarity: 'RARO', icon: '✨', desc: 'El bufo de Racha de Espada (tras asestar un crítico) otorga +25% de ATQ (en lugar del +10%).', lore: 'Haz de neutrones continuos que pule el filo térmico de la espada a nivel atómico.' },
+        { id: 'valvula_hidraulica', name: 'Válvula Hidráulica de Asalto', category: 'WEAPONS', rarity: 'RARO', icon: '🪓', desc: 'El efecto Verdugo del Hacha se activa contra rivales con ≤50% HP (en lugar de ≤40%) y su bonificación de daño aumenta en +15%.', lore: 'Pistones de compresión que liberan toda la fuerza de impacto cuando el objetivo muestra debilidad estructural.' },
+        { id: 'nucleo_canalizador', name: 'Núcleo Canalizador', category: 'WEAPONS', rarity: 'EPICO', icon: '🪄', desc: 'Los escudos y curaciones de Báculos son un 50% más potentes y purgan 1 debuff del aliado beneficiado.', lore: 'Canalizador cuántico que filtra frecuencias corruptas y estabiliza el plasma defensivo de los báculos.' },
+        { id: 'chip_punteria_laser', name: 'Chip de Puntería Láser', category: 'WEAPONS', rarity: 'COMUN', icon: '🎯', desc: 'Todo el escuadrón gana +15% de Precisión (ACC) fija y sus impactos nunca fallan contra enemigos bajo estados alterados o marcas.', lore: 'Sensor óptico infrarrojo con telemetría de bloqueo continuo sobre objetivos alterados.' },
+        { id: 'modulo_critico_mk2', name: 'Módulo Crítico MK-II', category: 'WEAPONS', rarity: 'RARO', icon: '💥', desc: 'Otorga +10% de Probabilidad Crítica a todo el escuadrón y aumenta el multiplicador de Daño Crítico a 1.75x (o +25% al multiplicador actual).', lore: 'Algoritmo de cálculo balístico que localiza las junturas débiles de los chasis enemigos.' },
+        { id: 'guantelete_plasma_dual', name: 'Guantelete de Plasma Dual', category: 'WEAPONS', rarity: 'EPICO', icon: '🥊', desc: 'Cualquier aliado que no porte Daga tiene un 25% de probabilidad de asestar un segundo impacto básico consecutivo al 50% de daño.', lore: 'Guantelete servo-asistido que descarga una segunda ráfaga de plasma antes de retraer el brazo.' },
+        { id: 'reciclador_energia', name: 'Reciclador de Energía', category: 'WEAPONS', rarity: 'COMUN', icon: '♻️', desc: 'Usar una Habilidad Especial justo en el turno siguiente a un ataque básico otorga +15% de daño a dicha habilidad.', lore: 'Batería auxiliar que almacena la inercia cinética del ataque básico para sobrecargar la habilidad táctica.' },
+
+        // 3. SUPERVIVENCIA, BLINDAJE Y ESCUDOS (8)
+        { id: 'blindaje_nanografeno', name: 'Blindaje de Nanografeno', category: 'SURVIVAL', rarity: 'RARO', icon: '🛡️', desc: 'Al iniciar cada combate, todos los aliados despliegan un Escudo de plasma equivalente al 15% de su HP Máximo por 2 turnos.', lore: 'Capas de nanografeno auto-ensamblables que amortiguan la primera andanada de hostilidades.' },
+        { id: 'deflector_reflectante', name: 'Deflector Reflectante', category: 'SURVIVAL', rarity: 'COMUN', icon: '🪞', desc: 'Al usar la acción Defender, el aliado refleja el 40% del daño recibido de vuelta al atacante.', lore: 'Espejo electromagnético que repele los proyectiles hacia su punto de origen mientras se mantiene la guardia.' },
+        { id: 'manto_espinas_reactivas', name: 'Manto de Espinas Reactivas', category: 'SURVIVAL', rarity: 'RARO', icon: '🌵', desc: 'La Coraza de Espinas dura 1 turno adicional y refleja el 70% del daño recibido (en lugar del 50%).', lore: 'Espinas de tungsteno imantadas que devuelven el impacto con letalidad reforzada.' },
+        { id: 'celula_regenerativa', name: 'Célula Regenerativa', category: 'SURVIVAL', rarity: 'RARO', icon: '🔋', desc: '1 vez por combate: En el primer turno de acción de cada robot aliado, este repara y recupera un 4% de su HP Máximo.', lore: 'Célula electroquímica de reserva que se auto-descarga en el arranque de sistemas para sellar fugas.' },
+        { id: 'protocolo_fenix', name: 'Protocolo Fénix', category: 'SURVIVAL', rarity: 'LEGENDARIO', icon: '🦅', desc: '1 sola vez por incursión: Si un aliado recibe daño letal, sobrevive con 1 HP y despliega Barrera de Plasma por 1 turno.', lore: 'Protocolo cibernético de emergencia militar que niega la desactivación total mediante un pulso de reinicio crítico.' },
+        { id: 'aislante_electrostatico', name: 'Aislante Electroestático', category: 'SURVIVAL', rarity: 'COMUN', icon: '🔌', desc: 'Todo el escuadrón es totalmente inmune al Aturdimiento (STUN) y a la Ralentización extrema.', lore: 'Conexión a tierra con bobinas superconductoras que anulan descargas y parálisis en los servomotores.' },
+        { id: 'disipador_criogenico', name: 'Disipador Criogénico', category: 'SURVIVAL', rarity: 'COMUN', icon: '❄️', desc: 'El daño recibido por Quemaduras o efectos residuales por turno se reduce en un 50% en todos los aliados.', lore: 'Tuberías de nitrógeno líquido que enfrían inmediatamente el fuselaje ante aumentos críticos de temperatura.' },
+        { id: 'condensador_rocio', name: 'Condensador de Rocío', category: 'SURVIVAL', rarity: 'RARO', icon: '💧', desc: 'Cuando un aliado protegido por Rocío Protector es atacado, además de salpicar Marca de Agua, aplica Ceguera (-50% PREC) al atacante por 1 turno.', lore: 'Vaporizador hidrostático que dispara niebla densa a los sensores del agresor al recibir un impacto.' },
+
+        // 4. VELOCIDAD, INICIATIVA Y TURNOS (3)
+        { id: 'propulsor_iones', name: 'Propulsor de Iones', category: 'SPEED', rarity: 'COMUN', icon: '🚀', desc: 'Todo el escuadrón gana +2 de Velocidad (SPD) permanente, mejorando su posición en la cola de iniciativa.', lore: 'Micro-toberas de propulsión iónica instaladas en los chasis para una respuesta táctica inmediata.' },
+        { id: 'impulsor_asalto', name: 'Impulsor de Asalto', category: 'SPEED', rarity: 'EPICO', icon: '⚡', desc: 'En la Ronda 1 de cada combate, el aliado más veloz realiza dos turnos consecutivos antes de que actúen los enemigos.', lore: 'Inyector de sobrevoltaje que duplica los ciclos de procesamiento del combatiente líder al desplegarse.' },
+        { id: 'cronometro_sobredrive', name: 'Cronómetro de Sobredrive', category: 'SPEED', rarity: 'LEGENDARIO', icon: '⏱️', desc: 'Cuando un aliado elimina a un enemigo, obtiene inmediatamente un turno adicional instantáneo (máx. 1 vez por ronda).', lore: 'Reloj cuántico que comprime el flujo temporal al detectar una firma hostil neutralizada.' },
+
+        // 5. ECONOMÍA, EXPLORACIÓN Y TALLER (3)
+        { id: 'iman_chatarra', name: 'Imán de Chatarra', category: 'ECONOMY', rarity: 'COMUN', icon: '🧲', desc: 'Aumenta toda la Chatarra ⚙️ obtenida en combates y eventos en un +35%.', lore: 'Electroimán de alto alcance que recolecta aleaciones valiosas de los escombros de combate.' },
+        { id: 'tarjeta_acceso_vip', name: 'Tarjeta de Acceso VIP', category: 'ECONOMY', rarity: 'RARO', icon: '💳', desc: 'Reduce todos los precios en la Tienda de Mercaderes en un 25% adicional.', lore: 'Credencial corporativa codificada que desbloquea tarifas preferenciales en terminales comerciales.' },
+        { id: 'kit_forja_avanzada', name: 'Kit de Forja Avanzada', category: 'ECONOMY', rarity: 'EPICO', icon: '🧰', desc: 'Los Campamentos Tácticos permiten realizar 2 operaciones de mantenimiento en lugar de solo 1.', lore: 'Conjunto de herramientas neumáticas modulares que duplican la eficiencia de los talleres de campo.' },
+
+        // 6. RELIQUIAS CORRUPTAS (2)
+        { id: 'nucleo_hipercaliente', name: 'Núcleo Hipercaliente', category: 'CORRUPTED', rarity: 'CORRUPTA', icon: '☣️', desc: '+35% de Daño para todo el escuadrón en todas sus acciones. A cambio, cada aliado pierde el 3% de su HP actual al inicio de su turno.', lore: 'Núcleo inestable que irradia un poder devastador a costa de la integridad estructural de sus portadores.' },
+        { id: 'pacto_desguazador', name: 'Pacto del Desguazador', category: 'CORRUPTED', rarity: 'CORRUPTA', icon: '💀', desc: '+100% de Chatarra ⚙️ (duplica ganancias) y la Forja de armas en Campamentos es gratis. Sin embargo, los Campamentos no pueden reparar ni curar HP.', lore: 'Un acuerdo clandestino con chatarreros de la periferia: recursos ilimitados a cambio de prescindir de protocolos médicos.' }
+    ]
 };

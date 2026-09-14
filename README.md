@@ -11,11 +11,14 @@ Bienvenido al repositorio oficial de la **Wiki de Cyber-Elemental**, diseñada c
 
 - ⚡ **Diseño Neón Cyberpunk & HUD Táctico:** Paleta elemental pura (Fuego 🔥, Agua 💦, Tierra 🪨, Aire 💨, Legendario 👑), efectos de scanlines, halos de texto y tipografías futuristas (*Orbitron*, *Rajdhani*, *Share Tech Mono*).
 - 📱 **100% Responsivo:** Menú lateral sticky en escritorio, drawer táctico desplegable en móviles y adaptación a cualquier resolución.
-- 🔍 **Buscador Global Instantáneo:** Búsqueda en vivo de términos, mecánicas, enemigos y habilidades con atajos de teclado (`Ctrl + K` o `/`).
+- 🔍 **Buscador Global Instantáneo:** Búsqueda en vivo de términos, mecánicas, enemigos, reliquias y habilidades con atajos de teclado (`Ctrl + K` o `/`).
 - ⚡ **Simulador de Reacciones Elementales en Tiempo Real:** Selector dinámico de Marca activa + Ataque elemental que calcula instantáneamente el combo, multiplicador (1.2x a 1.5x) y efectos de estado.
+- 🔋 **Protocolo Overdrive & Habilidades Definitivas:** Desbloqueo en Nivel 5, carga acumulativa (ataques y absorción por escudo) y persistencia íntegra entre combates para asestar técnicas definitivas en momentos críticos.
+- ✨ **Catálogo de 34 Reliquias & Artefactos Pasivos:** Explorador interactivo con filtros por categoría (Sinergias Elementales, Armas, Supervivencia, Velocidad, Economía, Corruptas) y rarezas con cálculo dinámico.
+- 🗡️ **Afinidades Elementales Especializadas:** Bonificaciones tácticas diferenciadas para armas de Fuego (+15% ATQ / Marcados), Agua (+15% HP / Escudos), Tierra (+25% HP / -10% Daño recibido), Aire (+15% ATQ, +2 VEL, +10% Esquiva) y Legendarias (+25% ATQ / +15% HP universal).
 - 🌳 **Calculadora del Árbol de Habilidades (50 Pasivas):** Filtro interactivo por rama (Asalto, Blindaje, Sintonía, Logística) y Tier (1 al 4) con simulación de desbloqueo y contador de chatarra global.
 - ❓ **Guía de los 21 Eventos Misteriosos:** Base de datos completa con costos en chatarra, decisiones, riesgos y porcentajes matemáticos exactos.
-- 🤖 **Bestiario & Jefes de Sector:** Especificación de los 4 Grandes Élites (Coloso Sísmico, Berserker Térmico, Cyber-Stalker, Crio-Centinela), los 8 enemigos regulares y los 7 jefes de sector (incluyendo a TITAN-X, TITAN-OMEGA y SINGULARIDAD-ZERO).
+- 🤖 **Bestiario & Jefes de Sector:** Especificación de los 4 Grandes Élites con aperturas en Turno 1, encuentro 3v3 de TITAN-X (Fuego) asistido por 🪼 Ciber-Medusa y 🛰️ Drone Catalizador, los 8 enemigos regulares y los 7 jefes de sector.
 - 📊 **Tablas de Probabilidad:** Fórmulas de apertura de cofres 50/50, probabilidades de armas (3.125%), dropeo de consumibles y spawn de armas enemigas por piso.
 
 ---

@@ -69,7 +69,7 @@
                 <div class="nav-group-title">Base de Datos</div>
                 <ul class="wiki-nav">
                     <li><a href="#sec-bestiary" class="nav-link"><span class="nav-link-icon">🤖</span> 05. Bestiario & Jefes</a></li>
-                    <li><a href="#sec-arsenal" class="nav-link"><span class="nav-link-icon">🗡️</span> 06. Armamento & Chips</a></li>
+                    <li><a href="#sec-arsenal" class="nav-link"><span class="nav-link-icon">🗡️</span> 06. Armas, Reliquias & Chips</a></li>
                     <li><a href="#sec-towers" class="nav-link"><span class="nav-link-icon">🗼</span> 07. Campaña Multitorre</a></li>
                     <li><a href="#sec-mystery-events" class="nav-link"><span class="nav-link-icon">❓</span> 08. Eventos Misteriosos (21)</a></li>
                 </ul>
@@ -96,8 +96,9 @@
                 </p>
                 <div class="hero-quick-actions">
                     <a href="#sec-simulator" class="hero-btn hero-btn-primary">⚡ Probar Simulador de Combos</a>
-                    <a href="#sec-skill-tree" class="hero-btn hero-btn-secondary">🌳 Ver Árbol de Talentos (50 Pasivas)</a>
-                    <a href="#sec-bestiary" class="hero-btn hero-btn-secondary">🤖 Consultar Bestiario</a>
+                    <a href="#sec-relics" class="hero-btn hero-btn-secondary">✨ Ver Reliquias (34)</a>
+                    <a href="#sec-skill-tree" class="hero-btn hero-btn-secondary">🌳 Árbol de Talentos (50)</a>
+                    <a href="#sec-bestiary" class="hero-btn hero-btn-secondary">🤖 Bestiario & Jefes</a>
                 </div>
             </div>
 
@@ -233,6 +234,35 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <h3 id="sec-overdrive" style="margin-top: 2rem;">⚡ Protocolo Overdrive // Habilidades Definitivas (Nivel 5)</h3>
+                <p>
+                    Al alcanzar el <strong>Nivel 5</strong> con cualquier autómata, se desbloquea su reactor <strong>Overdrive (0% a 100%)</strong>. Al alcanzar el 100% de carga acumulada, el robot puede desatar su <em>Habilidad Definitiva</em> suprema de daño masivo en área o soporte cuántico.
+                </p>
+
+                <div class="overdrive-container">
+                    <div class="callout-title" style="color: var(--elem-earth);">🔋 Mecánica de Carga & Retención</div>
+                    <div class="overdrive-mechanics-grid">
+                        <div class="overdrive-mech-box">
+                            <div class="overdrive-mech-title">⚔️ Ofensiva Activa</div>
+                            <div class="overdrive-mech-gain">+15% Overdrive</div>
+                            <div class="overdrive-mech-desc">Por cada ataque básico o habilidad especial ejecutada por el robot.</div>
+                        </div>
+                        <div class="overdrive-mech-box">
+                            <div class="overdrive-mech-title">🛡️ Impacto Recibido</div>
+                            <div class="overdrive-mech-gain">+10% Overdrive</div>
+                            <div class="overdrive-mech-desc">Por cada golpe sufrido directamente o absorbido por barreras y escudos de plasma.</div>
+                        </div>
+                        <div class="overdrive-mech-box">
+                            <div class="overdrive-mech-title">💾 Persistencia Táctica</div>
+                            <div class="overdrive-mech-gain">100% Retenido</div>
+                            <div class="overdrive-mech-desc">La barra de Overdrive <strong>NO se reinicia entre combates</strong>; se conserva intacta para enfrentar Élites o Jefes de sector.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: #ffffff; margin-top: 1rem;">🌟 Técnicas Definitivas del Escuadrón</h4>
+                    <div id="overdrive-ultimates-grid" class="overdrive-ultimates-grid"></div>
                 </div>
 
                 <div class="callout-box tip">
@@ -491,6 +521,12 @@
                     </ul>
                 </div>
 
+                <h3 id="sec-boss-minions" style="margin-top: 3rem;">Sirvientes Tácticos de TITAN-X (Encuentro 3v3)</h3>
+                <p>
+                    En la Cámara del Núcleo (Piso 10), TITAN-X (Fuego 🔥) despliega 2 autómatas subordinados que coordinan combos letales de Vaporización y sobrealimentan su reactor térmico:
+                </p>
+                <div id="boss-minions-grid" class="elites-grid"></div>
+
                 <h3 id="sec-regular-enemies" style="margin-top: 3rem;">Catálogo de los 8 Enemigos Regulares</h3>
                 <div id="regular-enemies-grid" class="regular-enemies-grid"></div>
 
@@ -499,10 +535,10 @@
             </section>
 
             <!-- ==========================================================================
-                 06. ARSENAL, CHIPS & SUMINISTROS
+                 06. ARSENAL, CHIPS, RELIQUIAS & SUMINISTROS
                  ========================================================================== -->
             <section id="sec-arsenal" class="wiki-section">
-                <h2><span>🗡️</span> 06. Armamento Cibernético, Chips & Suministros</h2>
+                <h2><span>🗡️</span> 06. Armamento Cibernético, Reliquias, Chips & Suministros</h2>
 
                 <h3 id="sec-weapons">Armas Cibernéticas & Forja (+1)</h3>
                 <p>
@@ -511,14 +547,56 @@
                 <div id="weapons-catalog-grid" class="weapons-catalog-grid"></div>
 
                 <div id="sec-weapon-affinity" class="callout-box tip">
-                    <div class="callout-title">🌟 Bono de Afinidad Elemental</div>
-                    Si el elemento del arma coincide con el elemento nativo del robot portador (ej: Espada de Fuego en Ignis), la unidad recibe automáticamente un bono permanente de <strong>+20% HP Máximo y +20% de ATQ</strong>.
+                    <div class="callout-title">🌟 Bono de Afinidad Elemental Especializada</div>
+                    Equipar un arma del mismo elemento que el robot portador activa bonificaciones especializadas según el elemento nativo:
+                    <ul style="margin-top: 0.5rem; margin-left: 1.25rem;">
+                        <li><strong>🔥 Fuego:</strong> +15% ATQ Base y +15% de daño extra directo contra enemigos que tengan Marca Elemental activa o Quemadura.</li>
+                        <li><strong>💦 Agua:</strong> +15% HP Máximo y +25% de potencia / absorción a todas las barreras y escudos desplegados.</li>
+                        <li><strong>🪨 Tierra:</strong> +25% HP Máximo y -10% de reducción pasiva permanente a todo el daño recibido.</li>
+                        <li><strong>💨 Aire:</strong> +15% ATQ Base, +2 de Velocidad (SPD) fija de iniciativa y +10% de Probabilidad de Esquiva pasiva.</li>
+                        <li><strong>👑 Legendario:</strong> Afinidad Universal automática: +25% ATQ Base y +15% HP Máximo a cualquier robot sin importar su elemento.</li>
+                    </ul>
                 </div>
 
                 <div id="sec-weapons-legendary" class="callout-box">
                     <div class="callout-title">👑 Armas Legendarias Doradas</div>
                     Obtenidas exclusivamente al derrotar a los Jefes de Sector (TITAN-X o TITAN-OMEGA). Otorgan <strong>Afinidad Universal (+25% ATQ y +15% HP)</strong> para cualquier robot sin importar su elemento, y un multiplicador permanente de <strong>1.15x de daño universal</strong> sin desventajas contra ningún elemento. Al desmantelarse otorgan <strong>+100 Chatarra</strong>.
                 </div>
+
+                <!-- SECCIÓN DE RELIQUIAS -->
+                <h3 id="sec-relics" style="margin-top: 3rem;">✨ Catálogo Oficial de 34 Reliquias & Artefactos Pasivos</h3>
+                <p>
+                    Las reliquias son artefactos ancestrales y módulos cuánticos descubiertos en cofres, victorias contra élites o tiendas clandestinas que otorgan poderosas sinergias pasivas durante toda la expedición:
+                </p>
+
+                <div class="skill-tree-controls">
+                    <div class="skill-filters-group">
+                        <select id="relic-category-filter" class="sim-select" style="width: auto;">
+                            <option value="all">Todas las Categorías (6)</option>
+                            <option value="ELEMENTAL">✨ Sinergias Elementales (10)</option>
+                            <option value="WEAPONS">⚔️ Armas & Maestrías (8)</option>
+                            <option value="SURVIVAL">🛡️ Supervivencia & Blindaje (8)</option>
+                            <option value="SPEED">⚡ Velocidad & Iniciativa (3)</option>
+                            <option value="ECONOMY">⚙️ Economía & Taller (3)</option>
+                            <option value="CORRUPTED">☣️ Reliquias Corruptas (2)</option>
+                        </select>
+
+                        <select id="relic-rarity-filter" class="sim-select" style="width: auto;">
+                            <option value="all">Todas las Rarezas</option>
+                            <option value="COMUN">Común</option>
+                            <option value="RARO">Raro</option>
+                            <option value="EPICO">Épico</option>
+                            <option value="LEGENDARIO">Legendario</option>
+                            <option value="CORRUPTA">Corrupta</option>
+                        </select>
+
+                        <input type="text" id="relic-search-input" class="wiki-search-input" placeholder="Buscar reliquia..." style="width: 220px;">
+                    </div>
+
+                    <div id="relic-counter" class="skill-summary-counter">34 de 34 Reliquias</div>
+                </div>
+
+                <div id="relics-catalog-grid" class="relics-catalog-grid"></div>
 
                 <h3 id="sec-chips" style="margin-top: 3rem;">Chips de Habilidad Elemental (💾)</h3>
                 <p>

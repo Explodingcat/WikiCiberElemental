@@ -13,17 +13,20 @@
         { title: "Visión General y Lore de Cyber-Elemental", category: "Sección", sectionId: "sec-overview", snippet: "Premisa, ambientación cyberpunk 2184, ascenso por la torre de 10 pisos y neutralización de la IA suprema TITAN-X." },
         { title: "Condiciones de Victoria y Derrota", category: "Mecánica", sectionId: "sec-overview-victory", snippet: "Victoria al derrotar a TITAN-X en piso 10. Game Over por caída total del escuadrón o explosión de reclutamiento élite." },
         { title: "Rueda de Afinidades Elementales", category: "Mecánica", sectionId: "sec-elements", snippet: "Fuego vence Tierra, Tierra vence Aire, Aire vence Agua, Agua vence Fuego. Multiplicadores 1.35x, 0.75x y 1.0x." },
-        { title: "Combate en Escuadrón (Party Combat)", category: "Mecánica", sectionId: "sec-party-combat", snippet: "Despliegue de hasta 3 robots aliados simultáneos sobre pedestales holográficos y HUDs individuales." },
+        { title: "Combate en Escuadrón (Party Combat 3v3)", category: "Mecánica", sectionId: "sec-party-combat", snippet: "Despliegue de hasta 3 robots aliados simultáneos sobre pedestales holográficos y HUDs individuales." },
         { title: "Timeline de Iniciativa y Velocidad (SPD)", category: "Mecánica", sectionId: "sec-timeline", snippet: "Cola dinámica de turnos ordenada de mayor a menor velocidad al inicio de cada ronda de combate." },
         { title: "Acciones por Turno: Atacar, Defender, Suministros", category: "Mecánica", sectionId: "sec-combat-actions", snippet: "Habilidades con CD, reducción del 50% de daño al defender hasta el próximo turno y uso de objetos tácticos." },
+        { title: "Sistema de Overdrive y Habilidades Definitivas", category: "Mecánica", sectionId: "sec-overdrive", snippet: "Desbloqueo en Nivel 5, carga 0-100% por ataques y daño recibido. Persiste entre combates." },
         { title: "Matriz de Reacciones y Marcas Elementales", category: "Combos", sectionId: "sec-reactions", snippet: "Marcas con duración de 3 turnos y 12 reacciones cruzadas: Vaporización, Lodo, Ventisca, Tormenta Ígnea, etc." },
         { title: "Simulador de Reacciones en Tiempo Real", category: "Herramienta", sectionId: "sec-simulator", snippet: "Calculadora interactiva para probar combinaciones de Marca activa y Elemento atacante." },
         { title: "Los 4 Grandes Élites Especiales", category: "Bestiario", sectionId: "sec-special-elites", snippet: "Coloso Sísmico (Tierra), Berserker Térmico (Fuego), Cyber-Stalker (Aire) y Crio-Centinela (Agua/Aire)." },
+        { title: "Sirvientes de TITAN-X (Ciber-Medusa y Drone Catalizador)", category: "Bestiario", sectionId: "sec-boss-minions", snippet: "Ciber-Medusa (Agua, Salpicadura Corrosiva T1) y Drone Catalizador (Neutro, Escudo Térmico +20% ATQ T2)." },
         { title: "Catálogo de los 8 Enemigos Regulares", category: "Bestiario", sectionId: "sec-regular-enemies", snippet: "Dron Kamikaze, Baluarte Tectónico, Nanocirujano, Inhibidor Glitch, Drenador de Plasma, Francotirador Gauss, etc." },
-        { title: "Jefes de Sector y Colosos de la Torre", category: "Bestiario", sectionId: "sec-bosses", snippet: "TITAN-X (Piso 10), TITAN-OMEGA (Piso 20), SINGULARIDAD-ZERO (Piso 30) y 6 jefes regionales aleatorios." },
+        { title: "Jefes de Sector y Colosos de la Torre", category: "Bestiario", sectionId: "sec-bosses", snippet: "TITAN-X Fuego (Piso 10), TITAN-OMEGA (Piso 20), SINGULARIDAD-ZERO (Piso 30) y 6 jefes regionales aleatorios." },
         { title: "Armamento Cibernético y Mejoras Forjadas (+1)", category: "Arsenal", sectionId: "sec-weapons", snippet: "Daga (doble ataque), Hacha (perforación y verdugo), Báculo (regeneración) y Espada (daño puro y críticos)." },
-        { title: "Bono de Afinidad Elemental en Armas", category: "Mecánica", sectionId: "sec-weapon-affinity", snippet: "Equipar un arma del mismo elemento que el robot otorga +20% HP Máximo y +20% ATQ." },
+        { title: "Bono de Afinidad Elemental Especializada en Armas", category: "Mecánica", sectionId: "sec-weapon-affinity", snippet: "Fuego (+15% ATQ / +15% a Marcados), Agua (+15% HP / +25% Escudos), Tierra (+25% HP / -10% Daño), Aire (+15% ATQ, +2 VEL, +10% Esquiva)." },
         { title: "Armas Doradas Legendarias", category: "Arsenal", sectionId: "sec-weapons-legendary", snippet: "Afinidad universal para cualquier robot (+25% ATQ y +15% HP Máx), daño 1.15x sin desventaja." },
+        { title: "Catálogo de 34 Reliquias y Artefactos Pasivos", category: "Reliquias", sectionId: "sec-relics", snippet: "10 Elementales, 8 Armas, 8 Supervivencia, 3 Velocidad, 3 Economía y 2 Corruptas." },
         { title: "Chips de Habilidad Elemental (💾)", category: "Arsenal", sectionId: "sec-chips", snippet: "Lanzallamas, Geyser, Fisura y Tornado. 2.0x potencia, CD 3 y ranura modular única por robot." },
         { title: "Navegación Multitorre (Torres 1, 2 y 3)", category: "Progresión", sectionId: "sec-towers", snippet: "Estructura de 30 pisos: Torre Cibernética, Torre Cuántica y Torre de Singularidad con Llaves de acceso." },
         { title: "Guía Completa de los 21 Eventos Misteriosos", category: "Eventos", sectionId: "sec-mystery-events", snippet: "Tragamonedas Rota, Altar de Cristal, Fábrica de Chips, Portal Dimensional, Mina Terrestre y más." },
@@ -45,6 +48,31 @@
         });
     }
 
+    // Indexar Reliquias (34)
+    if (data && data.RELICS) {
+        data.RELICS.forEach(relic => {
+            const catName = data.RELIC_CATEGORIES[relic.category]?.name || relic.category;
+            searchIndex.push({
+                title: `Reliquia: ${relic.icon} ${relic.name} (${relic.rarity})`,
+                category: "Reliquia ✨",
+                sectionId: "sec-relics",
+                snippet: `${relic.desc} Categoría: ${catName}. ${relic.lore}`
+            });
+        });
+    }
+
+    // Indexar Overdrive Ultimates
+    if (data && data.OVERDRIVE && data.OVERDRIVE.ultimates) {
+        data.OVERDRIVE.ultimates.forEach(ult => {
+            searchIndex.push({
+                title: `Overdrive: ${ult.name} (${ult.robot} - ${ult.element})`,
+                category: "Overdrive ⚡",
+                sectionId: "sec-overdrive",
+                snippet: `${ult.desc} Desbloqueado en Nivel 5. Carga persistente entre combates.`
+            });
+        });
+    }
+
     // Indexar los 21 eventos
     if (data && data.MYSTERY_EVENTS) {
         data.MYSTERY_EVENTS.forEach(ev => {
@@ -57,7 +85,7 @@
         });
     }
 
-    // Indexar los Élites y Jefes
+    // Indexar los Élites, Sirvientes y Jefes
     if (data && data.SPECIAL_ELITES) {
         data.SPECIAL_ELITES.forEach(elite => {
             searchIndex.push({
@@ -65,6 +93,17 @@
                 category: "Élite 💀",
                 sectionId: "sec-special-elites",
                 snippet: `${elite.role}. Habilidades: ${elite.skills.map(s => s.name).join(' | ')}. ${elite.danger}`
+            });
+        });
+    }
+
+    if (data && data.BOSS_MINIONS) {
+        data.BOSS_MINIONS.forEach(minion => {
+            searchIndex.push({
+                title: `Sirviente: ${minion.emoji} ${minion.name} (${minion.element})`,
+                category: "Sirviente 🪼",
+                sectionId: "sec-boss-minions",
+                snippet: `${minion.role}. Habilidades: ${minion.skills.map(s => s.name).join(' | ')}. Estrategia: ${minion.strategy}`
             });
         });
     }
